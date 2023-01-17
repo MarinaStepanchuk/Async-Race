@@ -1,7 +1,3 @@
-export type RoutesType = {
-  [key: string]: () => void,
-};
-
 export type BodyCar = {
   name: string;
   color: string;

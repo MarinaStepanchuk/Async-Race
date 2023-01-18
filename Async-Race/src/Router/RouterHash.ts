@@ -2,7 +2,7 @@ import ErrorPage from '../pages/error/ErrorPage';
 import { RoutesType } from '../types/types';
 
 class RouterHash {
-  public constructor(private readonly routes: RoutesType) {
+  constructor(private readonly routes: RoutesType) {
     this.routes = routes;
   }
 
@@ -13,7 +13,7 @@ class RouterHash {
     if (cb) {
       cb();
     } else {
-      new ErrorPage().render();
+      ErrorPage.render();
     }
   }
 }

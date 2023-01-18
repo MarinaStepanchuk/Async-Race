@@ -3,9 +3,9 @@ import MainPage from '../pages/main/MainPage';
 import WinnerPage from '../pages/winners/WinnerPage';
 
 const Routes = {
-  '/': new MainPage().render,
-  '/garage': new GaragePage().render,
-  '/winners': new WinnerPage().render,
+  '/': MainPage.render,
+  '/garage': GaragePage.render,
+  '/winners': WinnerPage.render,
 };
 
 export default Routes;

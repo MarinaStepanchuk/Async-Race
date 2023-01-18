@@ -1,7 +1,7 @@
 import { body } from '../../constants/constants';
 
 class GaragePage {
-  public render(): void {
+  public static render(): void {
     // for test
     body.innerHTML = '';
     const div = document.createElement('div');

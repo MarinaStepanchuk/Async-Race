@@ -1,2 +1,3 @@
 .husky
 *config.js
+module.d.ts

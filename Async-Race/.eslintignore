@@ -1,2 +1,4 @@
-.husky
+.*
 *config.js
+node_modules
+module.d.ts

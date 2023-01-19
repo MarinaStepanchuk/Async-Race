@@ -1,7 +1,7 @@
 import './WinnersButton.styles.scss';
 import Element from '../Element';
 import { ClassMap, Content } from '../../constants/htmlConstants';
-import { winnersLink } from '../../constants/constants';
+import { PageHashes } from '../../constants/constants';
 
 class WinnersButton extends Element {
   constructor() {
@@ -18,7 +18,7 @@ class WinnersButton extends Element {
 
   public addListeners():void {
     this.element.addEventListener('click', () => {
-      window.location.hash = winnersLink;
+      window.location.hash = PageHashes.WINNERS;
     });
   }
 }

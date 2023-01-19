@@ -7,8 +7,8 @@ class RouterHash {
   }
 
   public router(): void {
-    const urlParts = window.location.hash.split('/');
-    const url: string = urlParts[1] ? `/${urlParts[1]}` : '/';
+    const [,pageRoute] = window.location.hash.split('/');
+    const url: string = pageRoute ? `/${pageRoute}` : '/';
     const cb = this.routes[url];
     if (cb) {
       cb();

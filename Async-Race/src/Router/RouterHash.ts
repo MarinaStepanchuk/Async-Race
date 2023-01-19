@@ -13,7 +13,7 @@ class RouterHash {
     if (cb) {
       cb();
     } else {
-      ErrorPage.render();
+      new ErrorPage().render();
     }
   }
 }

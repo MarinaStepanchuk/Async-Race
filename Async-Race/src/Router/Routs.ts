@@ -3,7 +3,7 @@ import MainPage from '../pages/main/MainPage';
 import WinnerPage from '../pages/winners/WinnerPage';
 
 const Routes = {
-  '/': MainPage.render,
+  '/': (): void => new MainPage().render(),
   '/garage': GaragePage.render,
   '/winners': WinnerPage.render,
 };

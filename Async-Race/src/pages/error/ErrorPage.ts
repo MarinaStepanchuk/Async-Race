@@ -1,12 +1,18 @@
 import { body } from '../../constants/constants';
+import Element from '../../components/Element';
+import './ErrorPage.styles.scss';
+import { ClassMap, Content } from '../../constants/htmlConstants';
 
-class ErrorPage {
-  public static render(): void {
-    // for test
+class ErrorPage extends Element {
+  constructor() {
+    super('main', [ClassMap.errorPage]);
+  }
+
+  public render(): void {
     body.innerHTML = '';
-    const div = document.createElement('div');
-    div.innerText = 'Error page';
-    body.append(div);
+    body.append(this.element);
+    const errorMessage = new Element('div', [ClassMap.errorMessage], Content.errorMessage).element;
+    this.element.append(errorMessage);
   }
 }
 

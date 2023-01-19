@@ -4,3 +4,17 @@
 html {
   font-size: 10px;
 }
+
+body {
+  width: 100%;
+  font-size: 2rem;
+  font-family: AirMillhouse, arial, serif;
+  font-weight: 100;
+  color: $font-color;
+}
+
+button {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}

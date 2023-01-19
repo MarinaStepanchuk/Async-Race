@@ -8,6 +8,11 @@ export const Endpoints = {
   WINNERS: `${baseUrl}/winners`,
 };
 
+export const PageHashes = {
+  GARAGE: '#/garage',
+  WINNERS: '#/winners',
+};
+
 export const body = document.querySelector('#app') as HTMLBodyElement;
 
 export const DefaultState: DefaultStateTypes = {

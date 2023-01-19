@@ -1,0 +1,25 @@
+.garage__controls__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+
+  &__input {
+    height: 2rem;
+  }
+
+  &__color {
+    height: 2.5rem;
+    padding: 0;
+  }
+
+  &__button {
+    @include button(8rem, 2.5rem);
+    border-radius: 0.5rem;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}

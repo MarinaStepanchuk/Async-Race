@@ -9,4 +9,19 @@
     url("../assets/font/air_millhouse_italic.woff2") format("woff2"),
     url("../assets/font/air_millhouse_italic.ttf") format("truetype");
   font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: BebasNeueReg;
+  src: url("../assets/font/air_millhouse_italic.eot");
+  src:
+    local("Bebas Neue Regular"),
+    local("BebasNeue-Regular"),
+    url("../assets/font/bebas_neue_regular.eot") format("embedded-opentype"),
+    url("../assets/font/bebas_neue_regular.woff") format("woff"),
+    url("../assets/font/air_millhouse_italic.woff2") format("woff2"),
+    url("../assets/font/air_millhouse_italic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
 }

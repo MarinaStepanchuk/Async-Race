@@ -22,6 +22,8 @@
     font-size: 4rem;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px #871216,0 0 20px #871216,0 0 30px #871216,0 0 40px #871216;
+    font-family: AirMillhouse, arial, serif;
+    font-weight: 200;
 
       &__container {
         width: 100%;
@@ -35,8 +37,6 @@
           text-shadow: 0 0 10px #871216,0 0 20px #871216,0 0 30px #871216,0 0 40px #871216;
           color: #ffffff;
           margin: 0;
-          font-family: AirMillhouse, arial, serif;
-          font-weight: 200;
         }
 
         &__img {
@@ -47,8 +47,6 @@
       &__buttons {
         display: flex;
         gap: 3rem;
-        font-family: AirMillhouse, arial, serif;
-        font-weight: 100;
         font-size: 2rem;
       }
   }

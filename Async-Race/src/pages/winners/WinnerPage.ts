@@ -1,16 +1,12 @@
 import { body } from '../../constants/constants';
+import Header from '../../containers/Header/Header';
+import { ButtonNames } from '../../types/enums';
 
 class WinnerPage {
   public static render(): void {
-    // for test
     body.innerHTML = '';
-    const div = document.createElement('div');
-    div.innerText = 'Winner page';
-    const linkGarage = document.createElement('a');
-    div.append(linkGarage);
-    linkGarage.innerHTML = 'garage';
-    linkGarage.href = '#/garage';
-    body.append(div);
+    const header = new Header(ButtonNames.winners).element;
+    body.append(header);
   }
 }
 

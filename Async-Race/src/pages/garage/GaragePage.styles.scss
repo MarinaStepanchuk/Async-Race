@@ -1,0 +1,19 @@
+body {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-image: url('../../assets/img/garage_background.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.garage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}

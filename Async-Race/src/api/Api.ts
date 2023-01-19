@@ -2,19 +2,16 @@ import {
   ICar, ICars, IWinner, IWinners,
 } from '../types/interfaces';
 import {
-  DataDistance, Drive, WinnersPageParams,
+  DataDistance, Drive,
 } from '../types/types';
 import {
-  StatusCodes, ErrorMessages, DefaultParams, RequestMethods, FileTypes, RequestHeaders, MovementStatuses,
+  StatusCodes, ErrorMessages, RequestMethods, FileTypes, RequestHeaders, MovementStatuses,
 } from '../types/enums';
-import { Endpoints } from '../constants/constants';
+import { Endpoints, DefaultState } from '../constants/constants';
 import { getUrlWithParams } from '../utils/getUrlWithParams';
 
 class Api {
-  public async getCars(
-    page = DefaultParams.PAGE,
-    limit = DefaultParams.LIMIT_CARS,
-  ): Promise<ICars | null> {
+  public async getCars({ page, limit } = DefaultState.PARAMS_CARS): Promise<ICars | null> {
     try {
       const URL = getUrlWithParams(Endpoints.GARAGE, { _page: page, _limit: limit });
       const response = await fetch(URL);
@@ -173,12 +170,9 @@ class Api {
     }
   }
 
-  public async getWinners(
-    page = DefaultParams.PAGE,
-    limit = DefaultParams.LIMIT_WINNERS,
-    sort = DefaultParams.SORT,
-    order = DefaultParams.ORDER,
-  ): Promise<IWinners | null> {
+  public async getWinners({
+    page, limit, sort, order,
+  } = DefaultState.PARAMS_WINNERS): Promise<IWinners | null> {
     try {
       const URL = getUrlWithParams(Endpoints.WINNERS, {
         _page: page,

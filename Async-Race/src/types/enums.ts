@@ -17,14 +17,6 @@ export enum StatusCodes {
   OK = 200,
 }
 
-export enum DefaultParams {
-  PAGE = 1,
-  LIMIT_CARS = 7,
-  LIMIT_WINNERS = 10,
-  SORT = 'id',
-  ORDER = 'ASC',
-}
-
 export enum RequestMethods {
   PUT = 'PUT',
   POST = 'POST',

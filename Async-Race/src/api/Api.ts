@@ -2,211 +2,282 @@ import {
   ICar, ICars, IWinner, IWinners,
 } from '../types/interfaces';
 import {
-  BodyCar, BodyWinner, DataDistance, Drive, WinnersPageParams,
+  DataDistance, Drive, WinnersPageParams,
 } from '../types/types';
-import { ErrorCodes, ErrorMessages, ResponceStatus } from '../types/enums';
-import { garage, engine, winners } from '../constants/constants';
+import {
+  StatusCodes, ErrorMessages, DefaultParams, RequestMethods, FileTypes, RequestHeaders, MovementStatuses,
+} from '../types/enums';
+import { Endpoints } from '../constants/constants';
+import { getUrlWithParams } from '../utils/getUrlWithParams';
 
 class Api {
-  public async getCars(page: number, limit = 7): Promise<ICars> {
+  public async getCars(
+    page = DefaultParams.PAGE,
+    limit = DefaultParams.LIMIT_CARS,
+  ): Promise<ICars | null> {
     try {
-      const response = await fetch(`${garage}?_page=${page}&_limit=${limit}`);
+      const URL = getUrlWithParams(Endpoints.GARAGE, { _page: page, _limit: limit });
+      const response = await fetch(URL);
+      const data = await response.json();
       return {
-        cars: await response.json(),
-        countCars: response.headers.get('X-Total-Count'),
+        cars: data,
+        countCars: response.headers.get(RequestHeaders.TOTAL_COUNT),
       };
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async getCar(id: number): Promise<ICar> {
+  public async getCar(id: number): Promise<ICar | null> {
     try {
-      const response = await fetch(`${garage}/${id}`);
-      return await response.json();
+      const URL = getUrlWithParams(Endpoints.GARAGE, {}, id);
+      const response = await fetch(URL);
+      const data = await response.json();
+
+      switch (response.status) {
+        case StatusCodes.OK:
+          return data;
+        case StatusCodes.NOT_FOUND:
+          throw new Error(ErrorMessages.NOT_FOUND_CAR);
+        default:
+          throw new Error(ErrorMessages.UNKNOWN);
+      }
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async createCar(bodyCar: BodyCar): Promise<ICar> {
+  public async createCar(bodyCar: Partial<ICar>): Promise<ICar | null> {
     try {
+      const URL = getUrlWithParams(Endpoints.GARAGE);
       const response = await fetch(
-        `${garage}`,
+        URL,
         {
-          method: 'POST',
+          method: RequestMethods.POST,
           body: JSON.stringify(bodyCar),
           headers: {
-            'Content-Type': 'application/json',
+            [RequestHeaders.CONTENT_TYPE]: FileTypes.JSON,
           },
         },
       );
-      return await response.json();
+      const data = await response.json();
+      return data;
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async deleteCar(id: number): Promise<ICar> {
+  public async deleteCar(id: number): Promise<Partial<ICar> | null> {
     try {
-      const response = await fetch(`${garage}/${id}`, { method: 'DELETE' });
-      return await response.json();
+      const URL = getUrlWithParams(Endpoints.GARAGE, {}, id);
+      const response = await fetch(URL, { method: RequestMethods.DELETE });
+      const data = await response.json();
+      return data;
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async updateCar(id: number, body: BodyCar): Promise<ICar> {
+  public async updateCar(id: number, body: Partial<ICar>): Promise<ICar | null> {
     try {
+      const URL = getUrlWithParams(Endpoints.GARAGE, {}, id);
       const response = await fetch(
-        `${garage}/${id}`,
+        URL,
         {
-          method: 'PUT',
+          method: RequestMethods.PUT,
           body: JSON.stringify(body),
           headers: {
-            'Content-Type': 'application/json',
+            [RequestHeaders.CONTENT_TYPE]: FileTypes.JSON,
           },
         },
       );
-      return await response.json();
-    } catch {
-      throw Error(ErrorMessages.UNKNOWN);
-    }
-  }
-
-  public async startEngine(id: number): Promise<DataDistance | Error> {
-    try {
-      const response = await fetch(`${engine}/?id=${id}&status=started`);
+      const data = await response.json();
 
       switch (response.status) {
-        case ResponceStatus.OK:
-          return await response.json();
-        case ErrorCodes.NOT_FOUND:
-          return new Error(ErrorMessages.NOT_FOUND_CAR);
-        case ErrorCodes.BAD_REQUEST:
-          return new Error(ErrorMessages.WRONG_PARAMETERS);
+        case StatusCodes.OK:
+          return data;
+        case StatusCodes.NOT_FOUND:
+          throw new Error(ErrorMessages.NOT_FOUND_CAR);
         default:
-          return new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessages.UNKNOWN);
       }
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async stopEngine(id: number): Promise<DataDistance | Error> {
+  public async startEngine(idCar: number): Promise<DataDistance | null> {
     try {
-      const response = await fetch(`${engine}/?id=${id}&status=stopped`);
+      const URL = getUrlWithParams(Endpoints.ENGINE, { id: idCar, status: MovementStatuses.START });
+      const response = await fetch(URL, { method: RequestMethods.PATCH });
+      const data = await response.json();
 
       switch (response.status) {
-        case ResponceStatus.OK:
-          return await response.json();
-        case ErrorCodes.NOT_FOUND:
-          return new Error(ErrorMessages.NOT_FOUND_CAR);
-        case ErrorCodes.BAD_REQUEST:
-          return new Error(ErrorMessages.WRONG_PARAMETERS);
+        case StatusCodes.OK:
+          return data;
+        case StatusCodes.NOT_FOUND:
+          throw new Error(ErrorMessages.NOT_FOUND_CAR);
+        case StatusCodes.BAD_REQUEST:
+          throw new Error(ErrorMessages.WRONG_PARAMETERS);
         default:
-          return new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessages.UNKNOWN);
       }
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async drive(id: number): Promise<Drive | Error> {
+  public async stopEngine(idCar: number): Promise<DataDistance | null> {
     try {
-      const response = await fetch(`${engine}/?id=${id}&status=drive`);
+      const URL = getUrlWithParams(Endpoints.ENGINE, { id: idCar, status: MovementStatuses.STOP });
+      const response = await fetch(URL, { method: RequestMethods.PATCH });
+      const data = await response.json();
 
       switch (response.status) {
-        case ResponceStatus.OK:
-          return await response.json();
-        case ErrorCodes.BAD_REQUEST:
-          return new Error(ErrorMessages.WRONG_PARAMETERS);
-        case ErrorCodes.NOT_FOUND:
-          return new Error(ErrorMessages.NOT_FOUND_CAR_TO_START);
-        case ErrorCodes.TOO_MANY_REQUESTS:
-          return new Error(ErrorMessages.DRIVE_IN_PROGRESS);
-        case ErrorCodes.INTERNAL_SERVER_ERROR:
-          return new Error(ErrorMessages.TURNED_ENGINE);
+        case StatusCodes.OK:
+          return data;
+        case StatusCodes.NOT_FOUND:
+          throw new Error(ErrorMessages.NOT_FOUND_CAR);
+        case StatusCodes.BAD_REQUEST:
+          throw new Error(ErrorMessages.WRONG_PARAMETERS);
         default:
-          return new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessages.UNKNOWN);
       }
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async getWinners({
-    page, limit = 10, sort, order,
-  }: WinnersPageParams): Promise<IWinners> {
+  public async drive(idCar: number): Promise<Drive> {
     try {
-      const response = await fetch(`${winners}/?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`);
+      const URL = getUrlWithParams(Endpoints.ENGINE, { id: idCar, status: MovementStatuses.DRIVE });
+      const response = await fetch(URL, { method: RequestMethods.PATCH });
+      const data = await response.json();
+
+      switch (response.status) {
+        case StatusCodes.OK:
+          return data;
+        case StatusCodes.BAD_REQUEST:
+          throw new Error(ErrorMessages.WRONG_PARAMETERS);
+        case StatusCodes.NOT_FOUND:
+          throw new Error(ErrorMessages.NOT_FOUND_CAR_TO_START);
+        case StatusCodes.TOO_MANY_REQUESTS:
+          throw new Error(ErrorMessages.DRIVE_IN_PROGRESS);
+        case StatusCodes.INTERNAL_SERVER_ERROR:
+          throw new Error(ErrorMessages.TURNED_ENGINE);
+        default:
+          throw new Error(ErrorMessages.UNKNOWN);
+      }
+    } catch {
+      return { success: false };
+    }
+  }
+
+  public async getWinners(
+    page = DefaultParams.PAGE,
+    limit = DefaultParams.LIMIT_WINNERS,
+    sort = DefaultParams.SORT,
+    order = DefaultParams.ORDER,
+  ): Promise<IWinners | null> {
+    try {
+      const URL = getUrlWithParams(Endpoints.WINNERS, {
+        _page: page,
+        _limit: limit,
+        _sort: sort,
+        _order: order,
+      });
+      const response = await fetch(URL);
+      const data = await response.json();
       return {
-        winners: await response.json(),
-        countWinners: response.headers.get('X-Total-Count'),
+        winners: data,
+        countWinners: response.headers.get(RequestHeaders.TOTAL_COUNT),
       };
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async getWinner(id: number): Promise<IWinner> {
+  public async getWinner(id: number): Promise<IWinner | null> {
     try {
-      const response = await fetch(`${winners}/${id}`);
-      return await response.json();
-    } catch {
-      throw Error(ErrorMessages.UNKNOWN);
-    }
-  }
+      const URL = getUrlWithParams(Endpoints.WINNERS, {}, id);
+      const response = await fetch(URL);
+      const data = await response.json();
 
-  public async createWinner(winner: IWinner): Promise<IWinner | Error> {
-    try {
-      const response = await fetch(
-        `${winners}`,
-        {
-          method: 'POST',
-          body: JSON.stringify(winner),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
       switch (response.status) {
-        case ResponceStatus.OK:
-          return await response.json();
-        case ErrorCodes.INTERNAL_SERVER_ERROR:
-          return new Error(ErrorMessages.DUPLICATE_ID);
+        case StatusCodes.OK:
+          return data;
+        case StatusCodes.NOT_FOUND:
+          throw new Error(ErrorMessages.NOT_FOUND_WINNER);
         default:
-          return new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessages.UNKNOWN);
       }
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
     }
   }
 
-  public async deleteWinner(id: number): Promise<IWinner> {
+  public async createWinner(winner: IWinner): Promise<IWinner | null> {
     try {
-      const response = await fetch(`${winners}/${id}`, { method: 'DELETE' });
-      return await response.json();
-    } catch {
-      throw Error(ErrorMessages.UNKNOWN);
-    }
-  }
-
-  public async updateWinner(id: number, bodyWinner: BodyWinner): Promise<IWinner> {
-    try {
+      const URL = getUrlWithParams(Endpoints.WINNERS);
       const response = await fetch(
-        `${winners}/${id}`,
+        URL,
         {
-          method: 'PUT',
-          body: JSON.stringify(bodyWinner),
+          method: RequestMethods.POST,
+          body: JSON.stringify(winner),
           headers: {
-            'Content-Type': 'application/json',
+            [RequestHeaders.CONTENT_TYPE]: FileTypes.JSON,
           },
         },
       );
-      return await response.json();
+
+      switch (response.status) {
+        case StatusCodes.OK:
+          throw await response.json();
+        case StatusCodes.INTERNAL_SERVER_ERROR:
+          throw new Error(ErrorMessages.DUPLICATE_ID);
+        default:
+          throw new Error(ErrorMessages.UNKNOWN);
+      }
     } catch {
-      throw Error(ErrorMessages.UNKNOWN);
+      return null;
+    }
+  }
+
+  public async deleteWinner(id: number): Promise<Partial<IWinner> | null> {
+    try {
+      const URL = getUrlWithParams(Endpoints.WINNERS, {}, id);
+      const response = await fetch(URL, { method: RequestMethods.DELETE });
+      const data = await response.json();
+      return data;
+    } catch {
+      return null;
+    }
+  }
+
+  public async updateWinner(id: number, bodyWinner: Partial<IWinner>): Promise<IWinner | null> {
+    try {
+      const response = await fetch(
+        `${Endpoints.WINNERS}/${id}`,
+        {
+          method: RequestMethods.PUT,
+          body: JSON.stringify(bodyWinner),
+          headers: {
+            [RequestHeaders.CONTENT_TYPE]: FileTypes.JSON,
+          },
+        },
+      );
+      const data = await response.json();
+
+      switch (response.status) {
+        case StatusCodes.OK:
+          return data;
+        case StatusCodes.NOT_FOUND:
+          throw new Error(ErrorMessages.NOT_FOUND_WINNER);
+        default:
+          throw new Error(ErrorMessages.UNKNOWN);
+      }
+    } catch {
+      return null;
     }
   }
 }

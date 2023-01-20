@@ -16,10 +16,6 @@ class GaragePage {
     const gatage = new Garage().element;
     main.append(controlsCars, gatage);
     body.append(header, main);
-    this.addListeners();
-  }
-
-  private addListeners(): void {
   }
 }
 

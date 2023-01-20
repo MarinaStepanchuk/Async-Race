@@ -53,7 +53,7 @@
 
   .garage__button,
   .winners__button {
-    @include link-button();
+    @include button();
   }
 }
 

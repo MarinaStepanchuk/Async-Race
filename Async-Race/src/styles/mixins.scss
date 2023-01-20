@@ -1,4 +1,4 @@
-@mixin link-button($width: 25rem, $height: 6rem) {
+@mixin button($width: 25rem, $height: 6rem) {
   width: $width;
   height: $height;
   font-family: inherit;
@@ -10,7 +10,7 @@
   margin: 1rem 2rem;
   border-radius: 3rem;
   background-image: linear-gradient(45deg, #e9e9e9 0%, #de3333 50%, #780000 100%);
-  background-position: 100% 0;
+  background-position: 99% 0;
   background-size: 200% 200%;
   color: $font-color;
   box-shadow: 0 1.6rem 3.2rem 0 rgba(0, 40, 120, .35);
@@ -38,27 +38,27 @@
   }
 }
 
-@mixin button($width: 13rem, $height: 3rem) {
-  width: $width;
-  height: $height;
-  font-family: inherit;
-  font-size: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-  background-image: linear-gradient(45deg, #b03838 0%, #b72525 50%, #640202 100%);
-  color: $font-color;
-  box-shadow: 0 1.6rem 3.2rem 0 rgba(0, 40, 120, .35);
-  transition: .5s;
+// @mixin button($width: 13rem, $height: 3rem) {
+//   width: $width;
+//   height: $height;
+//   font-family: inherit;
+//   font-size: inherit;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 1rem;
+//   background-image: linear-gradient(45deg, #b03838 0%, #b72525 50%, #640202 100%);
+//   color: $font-color;
+//   box-shadow: 0 1.6rem 3.2rem 0 rgba(0, 40, 120, .35);
+//   transition: .5s;
 
-  &:disabled {
-    background-image: linear-gradient(45deg, #e9e9e9 0%, #baabab 50%, #666262 100%);
-    color: $font-color;
-  }
+//   &:disabled {
+//     background-image: linear-gradient(45deg, #e9e9e9 0%, #baabab 50%, #666262 100%);
+//     color: $font-color;
+//   }
 
-  &:disabled:hover {
-    transform: none;
-    cursor: default;
-  }
-}
+//   &:disabled:hover {
+//     transform: none;
+//     cursor: default;
+//   }
+// }

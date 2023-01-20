@@ -1,3 +1,4 @@
+import './CarControls.styles.scss';
 import Element from '../../components/Element';
 import { ClassMap } from '../../constants/htmlConstants';
 import ControlButtons from '../../components/ControlButtons/ControlButtons';
@@ -14,7 +15,9 @@ class CarControls extends Element {
     const buttons = new ControlButtons().element;
     const createCar = new CreateCar().element;
     const updateCar = new UpdateCar().element;
-    this.element.append(createCar, updateCar, buttons);
+    const forms = new Element('div', [ClassMap.carForms]).element;
+    this.element.append(forms, buttons);
+    forms.append(createCar, updateCar);
   }
 }
 

@@ -12,6 +12,7 @@ export const ClassMap = {
   header: 'header',
   garagePage: 'garage',
   carControls: 'garage__controls',
+  carForms: 'garage__controls__forms',
   controlButtons: 'garage__controls__buttons',
   buttonRace: 'garage__controls__buttons_race',
   buttonReset: 'garage__controls__buttons_reset',
@@ -29,6 +30,18 @@ export const ClassMap = {
   garageNext: 'garage__race__pagination__next',
   garagePaginationTitle: 'garage__race__pagination__title',
   garagePaginationPage: 'garage__race__pagination__page',
+  carContainer: 'garage__race__cars__container',
+  carGeneralButtons: 'garage__race__cars__container__general-buttons',
+  selectCar: ['garage__race__cars__container__general-buttons__button', 'select-car'],
+  removeCar: ['garage__race__cars__container__general-buttons__button', 'remove-car'],
+  modelCar: 'garage__race__cars__container__general-buttons__model',
+  road: 'garage__race__cars__container__road',
+  launchPad: 'garage__race__cars__container__road__launch-pad',
+  flag: 'garage__race__cars__container__road__flag',
+  carControlPanel: 'garage__race__cars__container__road__launch-pad__controls',
+  startCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'start-car'],
+  stopCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'stop-car'],
+  car: 'garage__race__cars__container__road__launch-pad__car',
 };
 
 export const Content = {
@@ -48,9 +61,13 @@ export const Buttons = {
   generate: 'GENERATE CARS',
   previous: 'PREVIOUS',
   next: 'NEXT',
+  select: 'SELECT',
+  remove: 'REMOVE',
+  start: 'A',
+  stop: 'B',
 };
 
-export const Id = {
+export const Ids = {
   formCreate: 'create',
   inputCreateName: 'create-name',
   inputCreateColor: 'create-color',
@@ -59,6 +76,13 @@ export const Id = {
   inputUpdateColor: 'update-color',
   countCars: 'count-cars',
   carsPage: 'cars-page',
+  road: 'road-',
+  select: 'select-car-',
+  remove: 'remove-car-',
+  modelCar: 'name-',
+  car: 'care-',
+  start: 'start-',
+  stop: 'stop-',
 };
 
 export const Attributes = {

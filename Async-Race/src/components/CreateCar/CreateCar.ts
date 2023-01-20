@@ -1,18 +1,18 @@
 import Element from '../Element';
 import {
-  Buttons, ClassMap, Id, Types,
+  Buttons, ClassMap, Ids, Types,
 } from '../../constants/htmlConstants';
 
 class CreateCar extends Element {
   constructor() {
-    super('form', [ClassMap.form], '', Id.formCreate);
+    super('form', [ClassMap.form], '', Ids.formCreate);
     this.fill();
   }
 
   private fill():void {
-    const name = new Element('input', [ClassMap.formInput], '', Id.inputCreateName).element as HTMLInputElement;
+    const name = new Element('input', [ClassMap.formInput], '', Ids.inputCreateName).element as HTMLInputElement;
     name.type = Types.inputText;
-    const color = new Element('input', [ClassMap.formColor], '', Id.inputCreateColor).element as HTMLInputElement;
+    const color = new Element('input', [ClassMap.formColor], '', Ids.inputCreateColor).element as HTMLInputElement;
     color.type = Types.inputColor;
     const submit = new Element('button', [ClassMap.formButton], Buttons.create).element as HTMLButtonElement;
     submit.type = Types.buttonSubmit;

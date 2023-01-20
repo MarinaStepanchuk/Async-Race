@@ -1,6 +1,8 @@
 import './GaragePagination.styles.scss';
 import Element from '../Element';
-import { Buttons, ClassMap, Content, Id } from '../../constants/htmlConstants';
+import {
+  Buttons, ClassMap, Content, Ids,
+} from '../../constants/htmlConstants';
 
 class GaragePagination extends Element {
   constructor() {
@@ -13,7 +15,7 @@ class GaragePagination extends Element {
     const nextButton = new Element('button', [ClassMap.garageNext], Buttons.next).element;
     const paginationTitle = new Element('div', [ClassMap.garagePaginationTitle], Content.paginationTitle).element;
     this.element.append(previousButton, paginationTitle, nextButton);
-    const page = new Element('span', [ClassMap.garagePaginationPage], '1', Id.carsPage).element;
+    const page = new Element('span', [ClassMap.garagePaginationPage], '1', Ids.carsPage).element;
     paginationTitle.append(page);
   }
 }

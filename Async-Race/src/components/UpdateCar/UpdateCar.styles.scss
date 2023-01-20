@@ -17,6 +17,7 @@
   &__button {
     @include button(8rem, 2.5rem);
     border-radius: 0.5rem;
+    margin: 0;
 
     &:hover {
       transform: none;

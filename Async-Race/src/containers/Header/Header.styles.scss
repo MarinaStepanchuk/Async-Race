@@ -6,6 +6,6 @@
 
   .garage__button,
   .winners__button {
-    @include link-button(16rem, 4rem);
+    @include button(16rem, 4rem);
   }
 }

@@ -1,16 +1,21 @@
+import './GaragePage.styles.scss';
+import Header from '../../containers/Header/Header';
 import { body } from '../../constants/constants';
+import { ButtonNames } from '../../types/enums';
+import Element from '../../components/Element';
+import CarControls from '../../containers/CarControles/CarControls';
+import Garage from '../../containers/Garage/Garage';
+import { ClassMap } from '../../constants/htmlConstants';
 
 class GaragePage {
-  public static render(): void {
-    // for test
+  public render(): void {
     body.innerHTML = '';
-    const div = document.createElement('div');
-    div.innerText = 'Garage page';
-    const linkWinners = document.createElement('a');
-    div.append(linkWinners);
-    linkWinners.innerHTML = 'winners';
-    linkWinners.href = '#/winners';
-    body.append(div);
+    const header = new Header(ButtonNames.garage).element;
+    const main = new Element('main', [ClassMap.garage.garagePage]).element;
+    const controlsCars = new CarControls().element;
+    const gatage = new Garage().element;
+    main.append(controlsCars, gatage);
+    body.append(header, main);
   }
 }
 

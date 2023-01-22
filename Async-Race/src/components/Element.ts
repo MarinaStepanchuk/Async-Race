@@ -1,7 +1,7 @@
 class Element {
   public element: HTMLElement;
 
-  constructor(public tag: keyof HTMLElementTagNameMap = 'div', public classList: string[] = [], public content = '') {
+  constructor(public tag: keyof HTMLElementTagNameMap = 'div', public classList: string[] = [], public content = '', id?: string) {
     this.element = document.createElement(this.tag);
 
     if (classList.length > 0) {
@@ -9,6 +9,10 @@ class Element {
     }
 
     this.element.textContent = this.content;
+
+    if (id) {
+      this.element.id = id;
+    }
   }
 }
 

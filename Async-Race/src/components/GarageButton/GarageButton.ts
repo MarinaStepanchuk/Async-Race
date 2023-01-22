@@ -1,11 +1,10 @@
-import './GarageButton.styles.scss';
 import Element from '../Element';
-import { ClassMap, Content } from '../../constants/htmlConstants';
+import { Buttons, ClassMap } from '../../constants/htmlConstants';
 import { PageHashes } from '../../constants/constants';
 
 class GarageButton extends Element {
   constructor() {
-    super('button', [ClassMap.buttonToGarage], Content.buttonGarage);
+    super('button', [ClassMap.buttonToGarage], Buttons.garage);
     this.addListeners();
   }
 

@@ -8,7 +8,6 @@ import GarageButton from '../../components/GarageButton/GarageButton';
 class Header extends Element {
   constructor(private disabledButton: string) {
     super('header', [ClassMap.header]);
-    this.disabledButton = disabledButton;
     this.fill();
   }
 

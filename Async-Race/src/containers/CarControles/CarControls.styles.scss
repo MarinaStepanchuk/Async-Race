@@ -1,5 +1,7 @@
-.garage__controls__forms {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 1rem;
+.garage__controls {
+  &__forms {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
 }

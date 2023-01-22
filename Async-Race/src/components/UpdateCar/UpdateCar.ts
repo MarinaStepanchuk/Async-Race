@@ -1,7 +1,10 @@
 import './UpdateCar.styles.scss';
 import Element from '../Element';
 import {
-  Buttons, ClassMap, Ids, Types,
+  Buttons,
+  ClassMap,
+  Ids,
+  Types,
 } from '../../constants/htmlConstants';
 
 class UpdateCar extends Element {

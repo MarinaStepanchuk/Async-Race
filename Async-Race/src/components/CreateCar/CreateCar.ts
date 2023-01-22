@@ -1,11 +1,14 @@
 import Element from '../Element';
 import {
-  Buttons, ClassMap, Ids, Types,
+  Buttons,
+  ClassMap,
+  Ids,
+  Types,
 } from '../../constants/htmlConstants';
 
 class CreateCar extends Element {
   constructor() {
-    super('form', [ClassMap.form], '', Ids.formCreate);
+    super('form', [ClassMap.garage.form], '', Ids.formCreate);
     this.fill();
   }
 

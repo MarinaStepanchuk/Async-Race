@@ -1,31 +1,27 @@
 import './Garage.styles.scss';
 import Element from '../../components/Element';
 import {
-  ClassMap, Content, Ids,
+  ClassMap,
+  Content,
+  Ids,
 } from '../../constants/htmlConstants';
 import GaragePagination from '../../components/GaragePagination/GaragePagination';
 import Race from '../Race/Race';
 import Api from '../../api/Api';
-import { ICar, ICars } from '../../types/interfaces';
+import { ICars } from '../../types/interfaces';
 
 class Garage extends Element {
-  private countCars: number;
-
-  private cars: ICar[];
-
   constructor() {
-    super('section', [ClassMap.race]);
-    this.countCars = 0;
-    this.cars = [];
+    super('section', [ClassMap.garage.race]);
     this.fill();
   }
 
   private async fill(): Promise<void> {
     const data = await this.getCountCars();
-    const countCars = data ? Number(data?.countCars) : 0;
-    const cars = data ? data?.cars : [];
-    const header = new Element('div', [ClassMap.garageHeader]).element;
-    const headerTitle = new Element('span', [ClassMap.garageHeaderTitle], Content.raceHeader).element;
+    const countCars = data ? Number(data.countCars) : 0;
+    const cars = data ? data.cars : [];
+    const header = new Element('div', [ClassMap.garage.garageHeader]).element;
+    const headerTitle = new Element('span', [ClassMap.garage.garageHeaderTitle], Content.raceHeader).element;
     const count = new Element('span', [], `${countCars} `, Ids.countCars).element;
     header.append(count, headerTitle);
     const pagination = new GaragePagination().element;

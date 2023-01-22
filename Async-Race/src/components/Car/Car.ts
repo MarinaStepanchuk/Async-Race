@@ -1,7 +1,9 @@
 import './Car.styles.scss';
 import Element from '../Element';
 import {
-  Buttons, ClassMap, Ids,
+  Buttons,
+  ClassMap,
+  Ids,
 } from '../../constants/htmlConstants';
 import carImg from '../../constants/carImg';
 import { ICar } from '../../types/interfaces';
@@ -9,7 +11,6 @@ import { ICar } from '../../types/interfaces';
 class Car extends Element {
   constructor(private car: ICar) {
     super('div', [ClassMap.garage.carContainer], '', `${Ids.road}${car.id}`);
-    this.car = car;
     this.fill();
   }
 

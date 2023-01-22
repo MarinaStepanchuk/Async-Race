@@ -12,8 +12,8 @@ export const ClassMap = {
   header: 'header',
   garage: {
     garagePage: 'garage',
-    carControls: 'garage__controls',
-    carForms: 'garage__controls__forms',
+    garageControls: 'garage__controls',
+    garageForms: 'garage__controls__forms',
     controlButtons: 'garage__controls__buttons',
     buttonRace: 'garage__controls__buttons_race',
     buttonReset: 'garage__controls__buttons_reset',
@@ -43,7 +43,7 @@ export const ClassMap = {
     startCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'start-car'],
     stopCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'stop-car'],
     car: 'garage__race__cars__container__road__launch-pad__car',
-  },  
+  },
 };
 
 export const Content = {

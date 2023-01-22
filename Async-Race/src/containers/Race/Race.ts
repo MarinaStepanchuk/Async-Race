@@ -1,15 +1,12 @@
 import './Race.styles.scss';
 import Element from '../../components/Element';
-import {
-  ClassMap,
-} from '../../constants/htmlConstants';
+import { ClassMap } from '../../constants/htmlConstants';
 import { ICar } from '../../types/interfaces';
 import Car from '../../components/Car/Car';
 
 class Race extends Element {
   constructor(private cars: ICar[]) {
-    super('div', [ClassMap.garageCars]);
-    this.cars = cars;
+    super('div', [ClassMap.garage.garageCars]);
     this.fill();
   }
 

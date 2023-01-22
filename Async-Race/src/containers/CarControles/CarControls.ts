@@ -7,7 +7,7 @@ import UpdateCar from '../../components/UpdateCar/UpdateCar';
 
 class CarControls extends Element {
   constructor() {
-    super('section', [ClassMap.carControls]);
+    super('section', [ClassMap.garage.garageControls]);
     this.fill();
   }
 
@@ -15,7 +15,7 @@ class CarControls extends Element {
     const buttons = new ControlButtons().element;
     const createCar = new CreateCar().element;
     const updateCar = new UpdateCar().element;
-    const forms = new Element('div', [ClassMap.carForms]).element;
+    const forms = new Element('div', [ClassMap.garage.garageForms]).element;
     this.element.append(forms, buttons);
     forms.append(createCar, updateCar);
   }

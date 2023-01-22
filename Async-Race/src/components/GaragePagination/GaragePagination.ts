@@ -1,7 +1,10 @@
 import './GaragePagination.styles.scss';
 import Element from '../Element';
 import {
-  Buttons, ClassMap, Content, Ids,
+  Buttons,
+  ClassMap,
+  Content,
+  Ids,
 } from '../../constants/htmlConstants';
 
 class GaragePagination extends Element {

@@ -11,7 +11,7 @@ class GaragePage {
   public render(): void {
     body.innerHTML = '';
     const header = new Header(ButtonNames.garage).element;
-    const main = new Element('main', [ClassMap.garagePage]).element;
+    const main = new Element('main', [ClassMap.garage.garagePage]).element;
     const controlsCars = new CarControls().element;
     const gatage = new Garage().element;
     main.append(controlsCars, gatage);

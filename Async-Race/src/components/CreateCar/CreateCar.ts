@@ -10,11 +10,11 @@ class CreateCar extends Element {
   }
 
   private fill():void {
-    const name = new Element('input', [ClassMap.formInput], '', Ids.inputCreateName).element as HTMLInputElement;
+    const name = new Element('input', [ClassMap.garage.formInput], '', Ids.inputCreateName).element as HTMLInputElement;
     name.type = Types.inputText;
-    const color = new Element('input', [ClassMap.formColor], '', Ids.inputCreateColor).element as HTMLInputElement;
+    const color = new Element('input', [ClassMap.garage.formColor], '', Ids.inputCreateColor).element as HTMLInputElement;
     color.type = Types.inputColor;
-    const submit = new Element('button', [ClassMap.formButton], Buttons.create).element as HTMLButtonElement;
+    const submit = new Element('button', [ClassMap.garage.formButton], Buttons.create).element as HTMLButtonElement;
     submit.type = Types.buttonSubmit;
     this.element.append(name, color, submit);
   }

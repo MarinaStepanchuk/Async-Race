@@ -113,11 +113,6 @@ export const Ids = {
   sortTimes: 'sort-by-times',
 };
 
-export const Attributes = {
-  disabled: 'disabled',
-  cellspacing: 'cellspacing',
-};
-
 export const Types = {
   inputText: 'text',
   inputColor: 'color',

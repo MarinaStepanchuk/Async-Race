@@ -1,8 +1,9 @@
 import './WinnersTable.styles.scss';
 import Element from '../../components/Element';
 import {
-  Attributes,
-  ClassMap, Content, Ids,
+  ClassMap,
+  Content,
+  Ids,
 } from '../../constants/htmlConstants';
 import { IWinner } from '../../types/interfaces';
 import Winner from '../../components/Winner/Winner';
@@ -14,7 +15,7 @@ class WinnerTables extends Element {
   }
 
   private fill():void {
-    this.element.setAttribute(Attributes.cellspacing, '0');
+    this.element.setAttribute('cellspacing', '0');
     const head = new Element('thead').element;
     const number = new Element('th', [], Content.tableTitlesNumber).element;
     const car = new Element('th', [], Content.tableTitlesCar).element;

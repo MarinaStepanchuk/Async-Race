@@ -7,15 +7,21 @@ import {
 } from '../../constants/htmlConstants';
 import carImg from '../../constants/carImg';
 import { ICar } from '../../types/interfaces';
+import { createElement } from '../../utils/createElement';
 
-class Car extends Element {
+class Car {
+  public element;
+
   constructor(private car: ICar) {
-    super('div', [ClassMap.garage.carContainer], '', `${Ids.road}${car.id}`);
+    this.element = createElement({
+      tag: 'div', classList: [ClassMap.garage.carContainer], content: '', id: `${Ids.road}${car.id}`,
+    });
+
     this.fill();
   }
 
   private fill():void {
-    const buttonsContainer = new Element('div', [ClassMap.garage.carGeneralButtons]).element;
+    const buttonsContainer = createElement({ tag: 'div', classList: [ClassMap.garage.carGeneralButtons] });
     const road = new Element('div', [ClassMap.garage.road]).element;
     this.element.append(buttonsContainer, road);
 

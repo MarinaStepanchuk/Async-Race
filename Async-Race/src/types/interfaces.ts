@@ -19,3 +19,10 @@ export interface IWinners {
   winners: IWinner[],
   countWinners: string | null
 }
+
+export interface IOptionsElement {
+  tag: keyof HTMLElementTagNameMap,
+  classList?: string[],
+  content?: string,
+  id?: string,
+}

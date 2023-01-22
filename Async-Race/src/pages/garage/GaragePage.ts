@@ -6,6 +6,7 @@ import Element from '../../components/Element';
 import CarControls from '../../containers/CarControles/CarControls';
 import Garage from '../../containers/Garage/Garage';
 import { ClassMap } from '../../constants/htmlConstants';
+import Api from '../../api/Api';
 
 class GaragePage {
   public render(): void {
@@ -13,7 +14,7 @@ class GaragePage {
     const header = new Header(ButtonNames.garage).element;
     const main = new Element('main', [ClassMap.garage.garagePage]).element;
     const controlsCars = new CarControls().element;
-    const gatage = new Garage().element;
+    const gatage = new Garage(new Api()).element;
     main.append(controlsCars, gatage);
     body.append(header, main);
   }

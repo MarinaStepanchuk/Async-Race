@@ -4,7 +4,7 @@ import WinnerPage from '../pages/winners/WinnerPage';
 
 const Routes = {
   '/': (): void => new MainPage().render(),
-  '/garage': GaragePage.render,
+  '/garage': ():void => new GaragePage().render(),
   '/winners': WinnerPage.render,
 };
 

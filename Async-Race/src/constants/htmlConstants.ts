@@ -9,12 +9,90 @@ export const ClassMap = {
   greetingButtons: 'main__greeting__buttons',
   errorPage: 'error',
   errorMessage: 'error__message',
+  header: 'header',
+  garage: {
+    garagePage: 'garage',
+    garageControls: 'garage__controls',
+    garageForms: 'garage__controls__forms',
+    controlButtons: 'garage__controls__buttons',
+    buttonRace: 'garage__controls__buttons_race',
+    buttonReset: 'garage__controls__buttons_reset',
+    buttonGenerate: 'garage__controls__buttons_generate',
+    form: 'garage__controls__form',
+    formInput: 'garage__controls__form__input',
+    formColor: 'garage__controls__form__color',
+    formButton: 'garage__controls__form__button',
+    race: 'garage__race',
+    garageHeader: 'garage__race__header',
+    garagePagination: 'garage__race__pagination',
+    garageCars: 'garage__race__cars',
+    garageHeaderTitle: 'garage__race__header__title',
+    garagePrevious: 'garage__race__pagination__previous',
+    garageNext: 'garage__race__pagination__next',
+    garagePaginationTitle: 'garage__race__pagination__title',
+    garagePaginationPage: 'garage__race__pagination__page',
+    carContainer: 'garage__race__cars__container',
+    carGeneralButtons: 'garage__race__cars__container__general-buttons',
+    selectCar: ['garage__race__cars__container__general-buttons__button', 'select-car'],
+    removeCar: ['garage__race__cars__container__general-buttons__button', 'remove-car'],
+    modelCar: 'garage__race__cars__container__general-buttons__model',
+    road: 'garage__race__cars__container__road',
+    launchPad: 'garage__race__cars__container__road__launch-pad',
+    flag: 'garage__race__cars__container__road__flag',
+    carControlPanel: 'garage__race__cars__container__road__launch-pad__controls',
+    startCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'start-car'],
+    stopCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'stop-car'],
+    car: 'garage__race__cars__container__road__launch-pad__car',
+  },
 };
 
 export const Content = {
-  buttonGarage: 'TO GARAGE',
-  buttonWinners: 'TO WINNERS',
   greeting: 'Welcome to the Async Race',
-  errorMessage: `404
-   page not found`,
+  errorMessage: '404 page not found',
+  raceHeader: 'CARS IN GARAGE',
+  paginationTitle: 'PAGE ',
+};
+
+export const Buttons = {
+  garage: 'TO GARAGE',
+  winners: 'TO WINNERS',
+  create: 'CREATE',
+  update: 'UPDATE',
+  race: 'RACE',
+  reset: 'RESET',
+  generate: 'GENERATE CARS',
+  previous: 'PREVIOUS',
+  next: 'NEXT',
+  select: 'SELECT',
+  remove: 'REMOVE',
+  start: 'A',
+  stop: 'B',
+};
+
+export const Ids = {
+  formCreate: 'create',
+  inputCreateName: 'create-name',
+  inputCreateColor: 'create-color',
+  formUpdate: 'update',
+  inputUpdateName: 'update-name',
+  inputUpdateColor: 'update-color',
+  countCars: 'count-cars',
+  carsPage: 'cars-page',
+  road: 'road-',
+  select: 'select-car-',
+  remove: 'remove-car-',
+  modelCar: 'name-',
+  car: 'care-',
+  start: 'start-',
+  stop: 'stop-',
+};
+
+export const Attributes = {
+  disabled: 'disabled',
+};
+
+export const Types = {
+  inputText: 'text',
+  inputColor: 'color',
+  buttonSubmit: 'submit',
 };

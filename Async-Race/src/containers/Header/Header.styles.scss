@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  gap: 2rem;
+  font-size: 2rem;
+  padding-top: 1.5rem;
+
+  .garage__button,
+  .winners__button {
+    @include button(16rem, 4rem);
+  }
+}

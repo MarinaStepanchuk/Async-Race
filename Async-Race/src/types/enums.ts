@@ -38,3 +38,8 @@ export enum MovementStatuses {
   START = 'started',
   DRIVE = 'drive',
 }
+
+export enum ButtonNames {
+  garage = 'garage',
+  winners = 'winners',
+}

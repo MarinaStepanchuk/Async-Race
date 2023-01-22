@@ -21,8 +21,8 @@ class WinnerPage {
     const countWinners = data ? Number(data?.countWinners) : 0;
     const winners = data ? data?.winners : [];
     const header = new Header(ButtonNames.winners).element;
-    const main = new Element('main', [ClassMap.winnerdPage]).element;
-    const sectionWinners = new Element('section', [ClassMap.winnersSection]).element;
+    const main = new Element('main', [ClassMap.winners.winnerdPage]).element;
+    const sectionWinners = new Element('section', [ClassMap.winners.winnersSection]).element;
 
     const subheader = new WinnersSubheader(countWinners).element;
     const pagination = new WinnersPagination().element;

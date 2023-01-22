@@ -44,20 +44,22 @@ export const ClassMap = {
     stopCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'stop-car'],
     car: 'garage__race__cars__container__road__launch-pad__car',
   },
-  winnerdPage: 'winners',
-  winnersSection: 'winners__container',
-  winnersHeader: 'winners__container__header',
-  winnersHeaderTitle: 'winners__container__header__title',
-  winnersPagination: 'winners__container__pagination',
-  winnersPrevious: 'winners__container__pagination__previous',
-  winnersNext: 'winners__container__pagination__next',
-  winnersPaginationTitle: 'winners__container__pagination__title',
-  winnersPaginationPage: 'winners__container__pagination__page',
-  winnersTable: 'winners__container__table',
-  winnersWins: 'winners__container__table__wins',
-  winnersSort: 'winners__container__table__sort',
-  sortASC: 'asc',
-  sortDESC: 'desc',
+  winners: {
+    winnerdPage: 'winners',
+    winnersSection: 'winners__container',
+    winnersHeader: 'winners__container__header',
+    winnersHeaderTitle: 'winners__container__header__title',
+    winnersPagination: 'winners__container__pagination',
+    winnersPrevious: 'winners__container__pagination__previous',
+    winnersNext: 'winners__container__pagination__next',
+    winnersPaginationTitle: 'winners__container__pagination__title',
+    winnersPaginationPage: 'winners__container__pagination__page',
+    winnersTable: 'winners__container__table',
+    winnersWins: 'winners__container__table__wins',
+    winnersSort: 'winners__container__table__sort',
+    sortASC: 'asc',
+    sortDESC: 'desc',
+  },
 };
 
 export const Content = {
@@ -113,7 +115,7 @@ export const Ids = {
 
 export const Attributes = {
   disabled: 'disabled',
-  cellspacing: 'cellspacing'
+  cellspacing: 'cellspacing',
 };
 
 export const Types = {

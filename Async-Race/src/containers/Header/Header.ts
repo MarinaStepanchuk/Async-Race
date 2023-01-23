@@ -17,11 +17,11 @@ class Header extends Element {
     this.element.append(garageButton, winnersButton);
 
     switch (this.disabledButton) {
-      case ButtonNames.garage:
+      case ButtonNames.GARAGE:
         garageButton.setAttribute('disabled', 'true');
         winnersButton.removeAttribute('disabled');
         break;
-      case ButtonNames.winners:
+      case ButtonNames.WINNERS:
         winnersButton.setAttribute('disabled', 'true');
         garageButton.removeAttribute('disabled');
         break;

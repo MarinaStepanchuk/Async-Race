@@ -22,7 +22,7 @@ class WinnerPage {
     const data = await this.apiService.getWinners();
     const countWinners = data ? Number(data?.countWinners) : 0;
     const winners = data ? data?.winners : [];
-    const header = new Header(ButtonNames.winners).element;
+    const header = new Header(ButtonNames.WINNERS).element;
     const main = new Element('main', [ClassMap.winners.winnerdPage]).element;
     const sectionWinners = new Element('section', [ClassMap.winners.winnersSection]).element;
 

@@ -104,9 +104,10 @@ export const Ids = {
   select: 'select-car-',
   remove: 'remove-car-',
   modelCar: 'name-',
-  car: 'care-',
+  car: 'car-',
   start: 'start-',
   stop: 'stop-',
+  finish: 'finish-',
   winner: 'winner-',
   countWinners: 'count-winners',
   sortWins: 'sort-by-wins',
@@ -118,3 +119,5 @@ export const Types = {
   inputColor: 'color',
   buttonSubmit: 'submit',
 };
+
+export const defaultColor = '#FEEA0B';

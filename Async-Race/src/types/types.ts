@@ -1,3 +1,5 @@
+import { ICar } from './interfaces';
+
 export type RoutesType = {
   [key: string]: () => void,
 };
@@ -11,7 +13,7 @@ export type Drive = {
   success: boolean;
 };
 
-export type DefaultStateTypes = {
+export type StateTypes = {
   PARAMS_CARS: {
     page: number;
     limit: number;
@@ -21,7 +23,10 @@ export type DefaultStateTypes = {
     limit: number;
     sort: 'id' | 'wins' | 'time',
     order: 'ASC' | 'DESC'
-  }
+  };
+  INPUT_CREATE: string,
+  CREATE_COLOR: string,
+  SELECT_CAR: ICar | null,
 };
 
 export type WinnersPageParams = {
@@ -33,4 +38,14 @@ export type WinnersPageParams = {
 
 export type UrlParams = {
   [key: string]: string | number;
+};
+
+export type SizeElement = {
+  width: number;
+  height: number;
+};
+
+export type Coordinates = {
+  x: number;
+  y: number;
 };

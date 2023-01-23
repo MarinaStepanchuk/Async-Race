@@ -40,6 +40,11 @@ export enum MovementStatuses {
 }
 
 export enum ButtonNames {
-  garage = 'garage',
-  winners = 'winners',
+  GARAGE = 'garage',
+  WINNERS = 'winners',
+}
+
+export enum Direction {
+  PREVIOUS = 'previous',
+  NEXT = 'next',
 }

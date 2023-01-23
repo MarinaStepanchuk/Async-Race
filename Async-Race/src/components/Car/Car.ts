@@ -31,8 +31,8 @@ class Car {
     buttonsContainer.append(select, remove, model);
 
     const launchPad = new Element('div', [ClassMap.garage.launchPad]).element;
-    const flag = new Element('div', [ClassMap.garage.flag]).element;
-    road.append(launchPad, flag);
+    const finish = new Element('div', [ClassMap.garage.flag], '', `${Ids.finish}${this.car.id}`).element;
+    road.append(launchPad, finish);
 
     const controls = new Element('div', [ClassMap.garage.carControlPanel]).element;
     const car = new Element('div', [ClassMap.garage.car], '', `${Ids.car}${this.car.id}`).element;

@@ -12,7 +12,6 @@ import { getElement } from '../../utils/getElement';
 import Garage from '../../containers/Garage/Garage';
 import Api from '../../api/Api';
 import { State } from '../../constants/state';
-import { ICar } from '../../types/interfaces';
 
 class UpdateCar extends Element {
   public apiService = new Api();

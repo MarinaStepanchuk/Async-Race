@@ -57,7 +57,7 @@ export class GarageRaceController {
       await this.apiService.stopEngine(id);
       const car = getElement(`#${Ids.car}${id}`);
       car.style.transform = 'translateX(0)';
-      window.cancelAnimationFrame(this.animation)
+      window.cancelAnimationFrame(this.animation);
     } catch (error) {
       console.log(error);
     }

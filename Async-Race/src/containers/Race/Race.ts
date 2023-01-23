@@ -9,7 +9,7 @@ import Garage from '../Garage/Garage';
 import { getElement } from '../../utils/getElement';
 // eslint-disable-next-line import/no-cycle
 import UpdateCar from '../../components/UpdateCar/UpdateCar';
-import GarageRaceController from '../../GarageRaceController/GarageRaceController';
+import { GarageRaceController } from '../../GarageRaceController/GarageRaceController';
 
 class Race extends Element {
   private raceController;

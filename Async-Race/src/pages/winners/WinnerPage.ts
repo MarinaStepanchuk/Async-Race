@@ -4,6 +4,7 @@ import Header from '../../containers/Header/Header';
 import { ButtonNames } from '../../types/enums';
 import { ClassMap } from '../../constants/htmlConstants';
 import Element from '../../components/Element';
+// eslint-disable-next-line import/no-cycle
 import WinnersPagination from '../../components/WinnersPagination/WinnersPagination';
 
 import Api from '../../api/Api';

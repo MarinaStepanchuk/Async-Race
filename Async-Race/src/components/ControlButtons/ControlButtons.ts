@@ -8,11 +8,15 @@ import Garage from '../../containers/Garage/Garage';
 // eslint-disable-next-line import/no-cycle
 import { getElement } from '../../utils/getElement';
 import { amountRandomCars } from '../../constants/constants';
+import GarageRaceController from '../../GarageRaceController/GarageRaceController';
 
 class ControlButtons extends Element {
+  private raceController;
+
   constructor() {
     super('div', [ClassMap.garage.controlButtons]);
     this.fill();
+    this.raceController = new GarageRaceController();
   }
 
   private fill():void {
@@ -23,6 +27,10 @@ class ControlButtons extends Element {
 
     generate.addEventListener('click', () => {
       this.generateCars();
+    });
+
+    race.addEventListener('click', () => {
+      this.raceController.startRace();
     });
   }
 

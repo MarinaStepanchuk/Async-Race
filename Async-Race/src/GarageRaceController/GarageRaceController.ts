@@ -1,5 +1,5 @@
 import Api from '../api/Api';
-import { Ids } from '../constants/htmlConstants';
+import { ClassMap, Ids } from '../constants/htmlConstants';
 import { getDistanceBetweenElements } from '../utils/getDistanceBetweenElements';
 import { getElement } from '../utils/getElement';
 
@@ -15,10 +15,21 @@ export class GarageRaceController {
 
   public async startCar(id: number): Promise<void> {
     try {
+      const startButton = getElement(`#${Ids.start}${id}`);
+      const selectButton = getElement(`#${Ids.select}${id}`);
+      const removeButton = getElement(`#${Ids.remove}${id}`);
+      selectButton.setAttribute('disabled', 'true');
+      removeButton.setAttribute('disabled', 'true');
+      startButton.setAttribute('disabled', 'true');
+
       const data = await this.apiService.startEngine(id);
       if (!data) {
+        selectButton.removeAttribute('disabled');
+        removeButton.removeAttribute('disabled');
+        startButton.removeAttribute('disabled');
         return;
       }
+
       const { velocity, distance } = data;
       const anumationTime = Math.round(distance / velocity);
       const car = getElement(`#${Ids.car}${id}`);
@@ -58,82 +69,23 @@ export class GarageRaceController {
       const car = getElement(`#${Ids.car}${id}`);
       car.style.transform = 'translateX(0)';
       window.cancelAnimationFrame(this.animation);
+      const startButton = getElement(`#${Ids.start}${id}`);
+      startButton.removeAttribute('disabled');
+      const selectButton = getElement(`#${Ids.select}${id}`);
+      const removeButton = getElement(`#${Ids.remove}${id}`);
+      selectButton.removeAttribute('disabled');
+      removeButton.removeAttribute('disabled');
     } catch (error) {
       console.log(error);
     }
   }
 
-  // public async driveCar(id: number) {
-  //   try {
-  //     const success = await this._racerService.switchDriveMode(id);
-
-  //     if (success?.status === ResponseStatus.internalServerError) {
-  //       if (this._state.getAnimation(id).started) {
-  //         this._state.setResultAnimation(id, 'engine breakdown');
-  //         this._state.stopAnimation(id);
-  //       }
-
-  //       return { id, result: 0 };
-  //     }
-  //     if (!(success?.status === ResponseStatus.ok)) {
-  //       throw new Error(
-  //         `${ErrorMessages.noStartDrive} [car id=${id}] (${success?.status}) ${success?.statusText}`,
-  //       );
-  //     }
-
-  //     if (this._state.getAnimation(id).started) {
-  //       // const timeA = this._state.getAnimation(id).time / 1000; // only animation duration time
-  //       const time = (Date.now() - this._state.getAnimation(id).startTime) / 1000;
-
-  //       this._state.setResultAnimation(id, `time: ${time}`);
-
-  //       return { id, result: time };
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // public async driveTest(id: number) {
-  //   return new Promise<{ id: number; result: number }>((resolve, reject) => {
-  //     this._racerService
-  //       .switchDriveMode(id)
-  //       .then((success) => {
-  //         if (success?.status === ResponseStatus.internalServerError) {
-  //           if (this._state.getAnimation(id).started) {
-  //             this._state.setResultAnimation(id, 'engine breakdown');
-  //             this._state.stopAnimation(id);
-  //           }
-  //           reject(false);
-  //         } else {
-  //           if (!(success?.status === ResponseStatus.ok)) reject();
-
-  //           if (this._state.getAnimation(id).started) {
-  //             // const time = this._state.getAnimation(id).time / 1000; // only animation duration time
-  //             const time = (Date.now() - this._state.getAnimation(id).startTime) / 1000;
-
-  //             this._state.setResultAnimation(id, `time: ${time}`);
-
-  //             resolve({ id, result: time });
-  //           }
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         throw new Error(error);
-  //       });
-  //   });
-  // }
-
-  // public async stopCar(id: number) {
-  //   try {
-  //     await this._racerService.stopEngine(id);
-
-  //     this._state.setResultAnimation(id, '');
-  //     this._state.stopAnimation(id);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  public async startRace(): Promise<void> {
+    const raceButton = getElement(`.${ClassMap.garage.buttonRace}`);
+    const generateButton = getElement(`.${ClassMap.garage.buttonGenerate}`);
+    raceButton.setAttribute('disabled', 'true');
+    generateButton.setAttribute('disabled', 'true');
+  }
 
   // //* -------- RACE -------- *//
   // public async StartRace() {

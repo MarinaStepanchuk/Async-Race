@@ -47,8 +47,8 @@ class CreateCar extends Element {
   private async createNewCar(name: HTMLInputElement, color: HTMLInputElement): Promise<void> {
     const inputName = name;
     const inputColor = color;
-    const data = await this.apiService.getCars();
-    await this.apiService.createCar({ name: inputName.value, color: inputColor.value, id: data ? Number(data.countCars) + 1 : 1 });
+    await this.apiService.getCars();
+    await this.apiService.createCar({ name: inputName.value, color: inputColor.value });
     inputName.value = '';
     State.INPUT_CREATE = '';
     inputColor.value = defaultColor;

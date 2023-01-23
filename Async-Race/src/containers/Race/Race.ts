@@ -20,7 +20,7 @@ class Race extends Element {
     this.raceController = new GarageRaceController();
   }
 
-  public async fill():Promise<void> {
+  public fill():void {
     const carsElements = this.cars.map((car) => new Car(car).element);
     this.element.append(...carsElements);
 
@@ -39,22 +39,11 @@ class Race extends Element {
       if (element.id.includes(Ids.start)) {
         const id = Number(element.id.split('-').reverse()[0]);
         this.raceController.startCar(id);
-        element.setAttribute('disabled', 'true');
-        const selectButton = getElement(`#${Ids.select}${id}`);
-        const removeButton = getElement(`#${Ids.remove}${id}`);
-        selectButton.setAttribute('disabled', 'true');
-        removeButton.setAttribute('disabled', 'true');
       }
 
       if (element.id.includes(Ids.stop)) {
         const id = Number(element.id.split('-').reverse()[0]);
-        await this.raceController.stopCar(id);
-        const startButton = getElement(`#${Ids.start}${id}`);
-        startButton.removeAttribute('disabled');
-        const selectButton = getElement(`#${Ids.select}${id}`);
-        const removeButton = getElement(`#${Ids.remove}${id}`);
-        selectButton.removeAttribute('disabled');
-        removeButton.removeAttribute('disabled');
+        this.raceController.stopCar(id);
       }
     });
   }

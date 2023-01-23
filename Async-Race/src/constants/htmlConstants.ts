@@ -44,13 +44,35 @@ export const ClassMap = {
     stopCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'stop-car'],
     car: 'garage__race__cars__container__road__launch-pad__car',
   },
+  winners: {
+    winnerdPage: 'winners',
+    winnersSection: 'winners__container',
+    winnersHeader: 'winners__container__header',
+    winnersHeaderTitle: 'winners__container__header__title',
+    winnersPagination: 'winners__container__pagination',
+    winnersPrevious: 'winners__container__pagination__previous',
+    winnersNext: 'winners__container__pagination__next',
+    winnersPaginationTitle: 'winners__container__pagination__title',
+    winnersPaginationPage: 'winners__container__pagination__page',
+    winnersTable: 'winners__container__table',
+    winnersWins: 'winners__container__table__wins',
+    winnersSort: 'winners__container__table__sort',
+    sortASC: 'asc',
+    sortDESC: 'desc',
+  },
 };
 
 export const Content = {
   greeting: 'Welcome to the Async Race',
   errorMessage: '404 page not found',
   raceHeader: 'CARS IN GARAGE',
+  winnersHeader: 'WINNERS',
   paginationTitle: 'PAGE ',
+  tableTitlesName: 'Name',
+  tableTitlesCar: 'Car',
+  tableTitlesNumber: 'Number',
+  tableTitlesWins: 'Wins',
+  tableTitlesTime: 'Best time (seconds)',
 };
 
 export const Buttons = {
@@ -82,13 +104,14 @@ export const Ids = {
   select: 'select-car-',
   remove: 'remove-car-',
   modelCar: 'name-',
-  car: 'care-',
+  car: 'car-',
   start: 'start-',
   stop: 'stop-',
-};
-
-export const Attributes = {
-  disabled: 'disabled',
+  finish: 'finish-',
+  winner: 'winner-',
+  countWinners: 'count-winners',
+  sortWins: 'sort-by-wins',
+  sortTimes: 'sort-by-times',
 };
 
 export const Types = {
@@ -96,3 +119,5 @@ export const Types = {
   inputColor: 'color',
   buttonSubmit: 'submit',
 };
+
+export const defaultColor = '#FEEA0B';

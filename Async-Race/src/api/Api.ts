@@ -7,11 +7,12 @@ import {
 import {
   StatusCodes, ErrorMessages, RequestMethods, FileTypes, RequestHeaders, MovementStatuses,
 } from '../types/enums';
-import { Endpoints, DefaultState } from '../constants/constants';
+import { Endpoints } from '../constants/constants';
 import { getUrlWithParams } from '../utils/getUrlWithParams';
+import { State } from '../constants/state';
 
 class Api {
-  public async getCars({ page, limit } = DefaultState.PARAMS_CARS): Promise<ICars | null> {
+  public async getCars({ page, limit } = State.PARAMS_CARS): Promise<ICars | null> {
     try {
       const URL = getUrlWithParams(Endpoints.GARAGE, { _page: page, _limit: limit });
       const response = await fetch(URL);
@@ -172,7 +173,7 @@ class Api {
 
   public async getWinners({
     page, limit, sort, order,
-  } = DefaultState.PARAMS_WINNERS): Promise<IWinners | null> {
+  } = State.PARAMS_WINNERS): Promise<IWinners | null> {
     try {
       const URL = getUrlWithParams(Endpoints.WINNERS, {
         _page: page,

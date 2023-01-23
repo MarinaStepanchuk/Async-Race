@@ -1,0 +1,20 @@
+table {
+  width: 50%;
+  border: none;
+  vertical-align: middle;
+  text-align: center;
+}
+
+thead {
+  background-color: $color-primary;
+}
+
+tr {
+  backdrop-filter: blur(10px);
+}
+
+td,
+th {
+  border: 1px solid $color-primary;
+  padding: 0.5rem;
+}

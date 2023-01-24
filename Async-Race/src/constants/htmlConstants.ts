@@ -43,6 +43,7 @@ export const ClassMap = {
     startCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'start-car'],
     stopCar: ['garage__race__cars__container__road__launch-pad__controls__buttons', 'stop-car'],
     car: 'garage__race__cars__container__road__launch-pad__car',
+    message: 'garage__message',
   },
   winners: {
     winnerdPage: 'winners',
@@ -121,3 +122,5 @@ export const Types = {
 };
 
 export const defaultColor = '#FEEA0B';
+
+export const messageWinnerNotFound = 'All cars are broken';

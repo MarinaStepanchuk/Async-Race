@@ -31,6 +31,12 @@ class ControlButtons extends Element {
 
     race.addEventListener('click', () => {
       this.raceController.startRace();
+      // console.log(winner);
+      // this.raceController.showMessage(winner);
+    });
+
+    reset.addEventListener('click', () => {
+      this.raceController.resetRace();
     });
   }
 

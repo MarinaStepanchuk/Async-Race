@@ -48,3 +48,8 @@ export enum Direction {
   PREVIOUS = 'previous',
   NEXT = 'next',
 }
+
+export enum RaceMessages {
+  NOT_FOUND_WINNER = 'All cars are broken',
+  CONGRATILATION = 'Race winner: ',
+}

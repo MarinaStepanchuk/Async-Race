@@ -26,3 +26,9 @@ export interface IOptionsElement {
   content?: string,
   id?: string,
 }
+
+export interface IChallenger {
+  id: number,
+  success: boolean,
+  time: number,
+}

@@ -35,13 +35,21 @@ class UpdateCar extends Element {
       submit.removeAttribute('disabled');
       name.removeAttribute('disabled');
       color.removeAttribute('disabled');
-      name.value = State.SELECT_CAR.name;
-      color.value = State.SELECT_CAR.color;
+      name.value = State.INPUT_UPDATE;
+      color.value = State.UPDATE_COLOR;
     } else {
       name.setAttribute('disabled', 'true');
       color.setAttribute('disabled', 'true');
       submit.setAttribute('disabled', 'true');
     }
+
+    name.addEventListener('input', () => {
+      State.INPUT_UPDATE = name.value;
+    });
+
+    color.addEventListener('input', () => {
+      State.UPDATE_COLOR = color.value;
+    });
 
     submit.addEventListener('click', (event) => {
       event.preventDefault();

@@ -26,6 +26,8 @@ export type StateTypes = {
   };
   INPUT_CREATE: string,
   CREATE_COLOR: string,
+  INPUT_UPDATE: string,
+  UPDATE_COLOR: string,
   SELECT_CAR: ICar | null,
 };
 

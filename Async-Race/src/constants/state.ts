@@ -14,5 +14,7 @@ export const State: StateTypes = {
   },
   INPUT_CREATE: '',
   CREATE_COLOR: defaultColor,
+  INPUT_UPDATE: '',
+  UPDATE_COLOR: defaultColor,
   SELECT_CAR: null,
 };

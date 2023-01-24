@@ -38,6 +38,10 @@ class ControlButtons extends Element {
 
     reset.addEventListener('click', () => {
       this.raceController.resetRace();
+      const stopCarButtons = [...document.querySelectorAll(`.${ClassMap.garage.stopCar[1]}`)];
+      stopCarButtons.forEach((button) => {
+        button.setAttribute('disabled', 'true');
+      });
     });
   }
 

@@ -18,20 +18,16 @@ class Garage extends Element {
   }
 
   public async fill(): Promise<void> {
-    try {
-      const data = await this.apiService.getCars();
-      const countCars = data ? Number(data.countCars) : 0;
-      const cars = data ? data.cars : [];
-      const header = new Element('div', [ClassMap.garage.garageHeader]).element;
-      const headerTitle = new Element('span', [ClassMap.garage.garageHeaderTitle], Content.raceHeader).element;
-      const count = new Element('span', [], `${countCars} `, Ids.countCars).element;
-      header.append(count, headerTitle);
-      const pagination = new GaragePagination().element;
-      const race = new Race(cars, this.apiService).element;
-      this.element.append(header, pagination, race);
-    } catch (error) {
-      console.log(error);
-    }
+    const data = await this.apiService.getCars();
+    const countCars = data ? Number(data.countCars) : 0;
+    const cars = data ? data.cars : [];
+    const header = new Element('div', [ClassMap.garage.garageHeader]).element;
+    const headerTitle = new Element('span', [ClassMap.garage.garageHeaderTitle], Content.raceHeader).element;
+    const count = new Element('span', [], `${countCars} `, Ids.countCars).element;
+    header.append(count, headerTitle);
+    const pagination = new GaragePagination().element;
+    const race = new Race(cars, this.apiService).element;
+    this.element.append(header, pagination, race);
   }
 }
 

@@ -10,6 +10,8 @@ import WinnersPagination from '../../components/WinnersPagination/WinnersPaginat
 import Api from '../../api/Api';
 import WinnersSubheader from '../../components/WinnersSubheader/WinnersSubheader';
 import WinnerTables from '../../containers/WinnersTable/WinnersTable';
+import { getElement } from '../../utils/getElement';
+import { State } from '../../constants/state';
 
 class WinnerPage {
   public apiService = new Api();
@@ -25,13 +27,10 @@ class WinnerPage {
     const winners = data ? data?.winners : [];
     const header = new Header(ButtonNames.WINNERS).element;
     const main = new Element('main', [ClassMap.winners.winnerdPage]).element;
-    const sectionWinners = new Element('section', [ClassMap.winners.winnersSection]).element;
-
     const subheader = new WinnersSubheader(countWinners).element;
     const pagination = new WinnersPagination().element;
     const winnersTable = new WinnerTables(winners).element;
     main.append(subheader, pagination, winnersTable);
-    main.append(sectionWinners);
     body.append(header, main);
   }
 }

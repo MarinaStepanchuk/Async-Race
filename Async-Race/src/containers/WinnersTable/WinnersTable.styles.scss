@@ -1,11 +1,13 @@
 table {
-  width: 50%;
+  min-width: 60rem;
   border: none;
   vertical-align: middle;
   text-align: center;
+  table-layout: fixed;
 }
 
 thead {
+  min-width: 100%;
   background-color: $color-primary;
 }
 
@@ -17,4 +19,39 @@ td,
 th {
   border: 1px solid $color-primary;
   padding: 0.5rem;
+  font-weight: 200;
+
+  &:nth-child(1) {
+    width: 8.5rem;
+  }
+
+  &:nth-child(2) {
+    width: 4.5rem;
+  }
+}
+
+.winners__container__table__wins {
+  width: 6.5rem;
+}
+
+.winners__container__table__sort {
+  width: 16.5rem;
+}
+
+.asc {
+  &::after {
+    content: '↓';
+    padding-left: 1rem;
+    width: 0.5rem;
+    height: 3rem;
+  }
+}
+
+.desc {
+  &::after {
+    content: '↑';
+    padding-left: 1rem;
+    width: 0.5rem;
+    height: 3rem;
+  }
 }

@@ -32,3 +32,8 @@ export interface IChallenger {
   success: boolean,
   time: number,
 }
+
+export interface IWinnerData {
+  id: number,
+  time: number,
+}

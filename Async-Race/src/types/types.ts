@@ -49,3 +49,7 @@ export type Coordinates = {
   x: number;
   y: number;
 };
+
+export type Animation = {
+  [key: number]: number
+};

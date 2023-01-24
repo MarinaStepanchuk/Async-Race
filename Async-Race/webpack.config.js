@@ -53,7 +53,7 @@ const baseConfig = {
       title: 'Async Race',
       filename: 'index.html',
       template: path.resolve(__dirname, './index.html'),
-      favicon: '',
+      favicon: './src/assets/favicon/favicon.png',
     }),
     new CleanWebpackPlugin(),
     new ESLintPlugin(),

@@ -31,9 +31,7 @@ class ControlButtons extends Element {
 
     race.addEventListener('click', async () => {
       const winner = await this.raceController.startRace();
-      this.raceController.addWinner(winner);
-      // console.log(winner);
-      // this.raceController.showMessage(winner);
+      await this.raceController.addWinner(winner);
     });
 
     reset.addEventListener('click', async () => {

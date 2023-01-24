@@ -2,19 +2,19 @@ import Api from '../api/Api';
 import { body } from '../constants/constants';
 import { ClassMap, Ids } from '../constants/htmlConstants';
 import { RaceMessages } from '../types/enums';
-import { IChallenger, IWinner } from '../types/interfaces';
+import { IChallenger, IWinner, IWinnerData } from '../types/interfaces';
 import { createElement } from '../utils/createElement';
 import { getDistanceBetweenElements } from '../utils/getDistanceBetweenElements';
 import { getElement } from '../utils/getElement';
+import { Animation } from '../types/types';
 
 export class GarageRaceController {
   private apiService;
 
-  private animation: number;
+  private animations: Animation = {};
 
   constructor() {
     this.apiService = new Api();
-    this.animation = 0;
   }
 
   public async startCar(id: number): Promise<IChallenger | null> {
@@ -51,16 +51,16 @@ export class GarageRaceController {
       car.style.transform = `translateX(${Math.min(passed, distanceBetweenElements)}px)`;
 
       if (passed < distanceBetweenElements) {
-        this.animation = window.requestAnimationFrame(step);
+        this.animations[id] = window.requestAnimationFrame(step);
       }
     };
 
-    this.animation = window.requestAnimationFrame(step);
+    this.animations[id] = window.requestAnimationFrame(step);
+
     const { success } = await this.apiService.drive(id);
-    console.log(success, id, car);
 
     if (!success) {
-      window.cancelAnimationFrame(this.animation);
+      window.cancelAnimationFrame(this.animations[id]);
     }
 
     return { id, success, time: anumationTime };
@@ -70,7 +70,7 @@ export class GarageRaceController {
     await this.apiService.stopEngine(id);
     const car = getElement(`#${Ids.car}${id}`);
     car.style.transform = 'translateX(0)';
-    window.cancelAnimationFrame(this.animation);
+    window.cancelAnimationFrame(this.animations[id]);
     const startButton = getElement(`#${Ids.start}${id}`);
     startButton.removeAttribute('disabled');
     const selectButton = getElement(`#${Ids.select}${id}`);
@@ -79,7 +79,7 @@ export class GarageRaceController {
     removeButton.removeAttribute('disabled');
   }
 
-  public async startRace(): Promise<Partial<IWinner> | null | undefined> {
+  public async startRace(): Promise<IWinnerData | null | undefined> {
     const stopCarButtons = [...document.querySelectorAll(`.${ClassMap.garage.stopCar[1]}`)];
     stopCarButtons.forEach((button) => {
       button.setAttribute('disabled', 'true');
@@ -98,7 +98,7 @@ export class GarageRaceController {
     return winner;
   }
 
-  private async findWinner(promises: Promise<IChallenger | null>[], idCars: number[]): Promise<Partial<IWinner> | null | undefined> {
+  private async findWinner(promises: Promise<IChallenger | null>[], idCars: number[]): Promise<IWinnerData | null | undefined> {
     const data = await Promise.race(promises);
 
     if (!data) {
@@ -111,7 +111,6 @@ export class GarageRaceController {
       const failedCarIndex = idCars.findIndex((index) => index === id);
       const restPromises = [...promises.slice(0, failedCarIndex), ...promises.slice(failedCarIndex + 1, promises.length)];
       const restIds = [...idCars.slice(0, failedCarIndex), ...idCars.slice(failedCarIndex + 1, idCars.length)];
-      console.log(restIds, restPromises);
       return this.findWinner(restPromises, restIds);
     }
     const winner = { id, time: +(time / 1000).toFixed(2) };
@@ -149,8 +148,21 @@ export class GarageRaceController {
     message.remove();
   }
 
-  public async addWinner(winner: Partial<IWinner> | null | undefined): Promise<void> {
+  public async addWinner(winner: IWinnerData | null | undefined): Promise<void> {
+    if (!winner) {
+      return;
+    }
 
+    const { id, time } = winner;
+    const existingWinner = await this.apiService.getWinner(id);
+
+    if (!existingWinner) {
+      await this.apiService.createWinner({ id, wins: 1, time });
+    } else {
+      const updateWins = existingWinner.wins + 1;
+      const updateTime = time < existingWinner.time ? time : existingWinner.time;
+      await this.apiService.updateWinner(id, { wins: updateWins, time: updateTime });
+    }
   }
 }
 

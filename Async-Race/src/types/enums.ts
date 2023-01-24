@@ -53,3 +53,14 @@ export enum RaceMessages {
   NOT_FOUND_WINNER = 'All cars are broken',
   CONGRATILATION = 'Race winner: ',
 }
+
+export enum Sort {
+  ID = 'id',
+  WINS = 'wins',
+  TIME = 'time',
+}
+
+export enum Order {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}

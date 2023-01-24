@@ -42,6 +42,7 @@ class Car {
 
     const start = new Element('button', ClassMap.garage.startCar, Buttons.start, `${Ids.start}${this.car.id}`).element;
     const stop = new Element('button', ClassMap.garage.stopCar, Buttons.stop, `${Ids.stop}${this.car.id}`).element;
+    stop.setAttribute('disabled', 'true');
     controls.append(start, stop);
   }
 }

@@ -39,11 +39,14 @@ class Race extends Element {
       if (element.id.includes(Ids.start)) {
         const id = Number(element.id.split('-').reverse()[0]);
         this.raceController.startCar(id);
+        const stopButton = getElement(`#${Ids.stop}${id}`);
+        stopButton.removeAttribute('disabled');
       }
 
       if (element.id.includes(Ids.stop)) {
         const id = Number(element.id.split('-').reverse()[0]);
         this.raceController.stopCar(id);
+        element.setAttribute('disabled', 'true');
       }
     });
   }
@@ -54,6 +57,7 @@ class Race extends Element {
     const garage = getElement(`.${ClassMap.garage.race}`);
     const garageUpdate = new Garage(this.apiService).element;
     garage.replaceWith(garageUpdate);
+    await this.apiService.deleteWinner(id);
   }
 }
 

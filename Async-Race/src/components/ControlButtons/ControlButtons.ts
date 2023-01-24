@@ -29,8 +29,9 @@ class ControlButtons extends Element {
       this.generateCars();
     });
 
-    race.addEventListener('click', () => {
-      this.raceController.startRace();
+    race.addEventListener('click', async () => {
+      const winner = await this.raceController.startRace();
+      this.raceController.addWinner(winner);
       // console.log(winner);
       // this.raceController.showMessage(winner);
     });

@@ -149,66 +149,9 @@ export class GarageRaceController {
     message.remove();
   }
 
-  // //* -------- RACE -------- *//
-  // public async StartRace() {
-  //   try {
-  //     const cars = this._state.getCars();
+  public async addWinner(winner: Partial<IWinner> | null | undefined): Promise<void> {
 
-  //     if (cars.length === 0) throw new Error(ErrorMessages.noCarsOnPage);
-
-  //     const resArr = cars.map(async (car) => {
-  //       await this.startCar(car.id);
-  //       return this.driveTest(car.id);
-  //     });
-
-  //     const res = await Promise.any(resArr).catch(() => {
-  //       throw new Error(ErrorMessages.noCarsFinished);
-  //     });
-
-  //     if (!res) throw new Error(ErrorMessages.noCarsFinished);
-
-  //     const { id, result } = res;
-  //     this._state.setResultAnimation(id, `WINNER! time: ${result}`);
-
-  //     this.setWinner(id, result);
-
-  //     await Promise.allSettled(resArr);
-  //     //
-  //   } catch (error) {
-  //     if (error) console.log(error);
-  //   }
-  // }
-
-  // private async setWinner(id: number, newTime: number) {
-  //   const winner = await this._racerService.getWinner(id);
-
-  //   if (winner?.status === ResponseStatus.notFound) {
-  //     // add new line
-  //     await this._racerService.createWinner({ id, wins: 1, time: newTime });
-
-  //     await this._winnersController.getWinners();
-  //   } else if (winner?.status === ResponseStatus.ok) {
-  //     // upd data
-  //     const { wins, time } = winner.data;
-  //     newTime = Math.min(newTime, time);
-  //     await this._racerService.updateWinner(id, { wins: wins + 1, time: newTime });
-
-  //     await this._winnersController.getWinners();
-  //   }
-  // }
-
-  // public async ResetRace() {
-  //   try {
-  //     const cars = this._state.getCars();
-
-  //     const resArr = cars.map((car) => this.stopCar(car.id));
-  //     await Promise.all(resArr);
-
-  //     this._controller.getCars();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  }
 }
 
 export default GarageRaceController;

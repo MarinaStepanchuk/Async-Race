@@ -32,11 +32,27 @@ class GaragePagination extends Element {
     nextButton.addEventListener('click', () => {
       this.changePage(Direction.NEXT);
       this.disableButtons(previousButton, nextButton);
+      const raceButton = getElement(`.${ClassMap.garage.buttonRace}`);
+      const generateButton = getElement(`.${ClassMap.garage.buttonGenerate}`);
+      const resetButton = getElement(`.${ClassMap.garage.buttonReset}`);
+      raceButton.removeAttribute('disabled');
+      generateButton.removeAttribute('disabled');
+      resetButton.removeAttribute('disabled');
+      const message = getElement(`.${ClassMap.garage.message}`);
+      message.remove();
     });
 
     previousButton.addEventListener('click', () => {
       this.changePage(Direction.PREVIOUS);
       this.disableButtons(previousButton, nextButton);
+      const raceButton = getElement(`.${ClassMap.garage.buttonRace}`);
+      const generateButton = getElement(`.${ClassMap.garage.buttonGenerate}`);
+      const resetButton = getElement(`.${ClassMap.garage.buttonReset}`);
+      raceButton.removeAttribute('disabled');
+      generateButton.removeAttribute('disabled');
+      resetButton.removeAttribute('disabled');
+      const message = getElement(`.${ClassMap.garage.message}`);
+      message.remove();
     });
   }
 

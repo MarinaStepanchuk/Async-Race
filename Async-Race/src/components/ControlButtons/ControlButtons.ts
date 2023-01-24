@@ -36,8 +36,8 @@ class ControlButtons extends Element {
       // this.raceController.showMessage(winner);
     });
 
-    reset.addEventListener('click', () => {
-      this.raceController.resetRace();
+    reset.addEventListener('click', async () => {
+      await this.raceController.resetRace();
       const stopCarButtons = [...document.querySelectorAll(`.${ClassMap.garage.stopCar[1]}`)];
       stopCarButtons.forEach((button) => {
         button.setAttribute('disabled', 'true');

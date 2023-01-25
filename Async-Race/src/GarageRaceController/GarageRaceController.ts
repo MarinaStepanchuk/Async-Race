@@ -8,7 +8,7 @@ import { getDistanceBetweenElements } from '../utils/getDistanceBetweenElements'
 import { getElement } from '../utils/getElement';
 import { Animation } from '../types/types';
 
-export class GarageRaceController {
+class GarageRaceController {
   private apiService;
 
   private animations: Animation = {};

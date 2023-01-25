@@ -50,12 +50,15 @@ class Race extends Element {
         race.setAttribute('disabled', 'true');
         const reset = getElement(`.${ClassMap.garage.buttonReset}`);
         reset.setAttribute('disabled', 'true');
+        const generate = getElement(`.${ClassMap.garage.buttonGenerate}`);
+        generate.setAttribute('disabled', 'true');
         const id = Number(element.id.split('-').reverse()[0]);
         const stopButton = getElement(`#${Ids.stop}${id}`);
         stopButton.removeAttribute('disabled');
         await this.raceController.startCar(id);
         race.removeAttribute('disabled');
         reset.removeAttribute('disabled');
+        generate.removeAttribute('disabled');
       }
 
       if (element.id.includes(Ids.stop)) {

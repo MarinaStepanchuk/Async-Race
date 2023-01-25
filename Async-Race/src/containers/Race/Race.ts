@@ -10,6 +10,7 @@ import { getElement } from '../../utils/getElement';
 // eslint-disable-next-line import/no-cycle
 import UpdateCar from '../../components/UpdateCar/UpdateCar';
 import { GarageRaceController } from '../../GarageRaceController/GarageRaceController';
+import { State } from '../../constants/state';
 
 class Race extends Element {
   private raceController;
@@ -34,13 +35,27 @@ class Race extends Element {
       if (element.id.includes(Ids.select)) {
         const id = Number(element.id.split('-').reverse()[0]);
         new UpdateCar().openCreateBlock(id);
+
+        const name = getElement(`#${Ids.inputUpdateName}`) as HTMLInputElement;
+        const color = getElement(`#${Ids.inputUpdateColor}`) as HTMLInputElement;
+
+        const car = await this.apiService.getCar(id);
+        State.SELECT_CAR = car;
+        State.INPUT_UPDATE = name.value;
+        State.UPDATE_COLOR = color.value;
       }
 
       if (element.id.includes(Ids.start)) {
+        const race = getElement(`.${ClassMap.garage.buttonRace}`);
+        race.setAttribute('disabled', 'true');
+        const reset = getElement(`.${ClassMap.garage.buttonReset}`);
+        reset.setAttribute('disabled', 'true');
         const id = Number(element.id.split('-').reverse()[0]);
-        this.raceController.startCar(id);
         const stopButton = getElement(`#${Ids.stop}${id}`);
         stopButton.removeAttribute('disabled');
+        await this.raceController.startCar(id);
+        race.removeAttribute('disabled');
+        reset.removeAttribute('disabled');
       }
 
       if (element.id.includes(Ids.stop)) {

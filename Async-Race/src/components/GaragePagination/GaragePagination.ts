@@ -39,7 +39,7 @@ class GaragePagination extends Element {
       generateButton.removeAttribute('disabled');
       resetButton.removeAttribute('disabled');
       const message = getElement(`.${ClassMap.garage.message}`);
-      message.remove();
+      message?.remove();
     });
 
     previousButton.addEventListener('click', () => {
@@ -52,7 +52,7 @@ class GaragePagination extends Element {
       generateButton.removeAttribute('disabled');
       resetButton.removeAttribute('disabled');
       const message = getElement(`.${ClassMap.garage.message}`);
-      message.remove();
+      message?.remove();
     });
   }
 

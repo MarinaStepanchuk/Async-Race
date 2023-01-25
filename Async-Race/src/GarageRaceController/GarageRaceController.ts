@@ -145,7 +145,7 @@ export class GarageRaceController {
     raceButton.removeAttribute('disabled');
     generateButton.removeAttribute('disabled');
     const message = getElement(`.${ClassMap.garage.message}`);
-    message.remove();
+    message?.remove();
   }
 
   public async addWinner(winner: IWinnerData | null | undefined): Promise<void> {

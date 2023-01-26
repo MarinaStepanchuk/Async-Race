@@ -30,8 +30,17 @@ class ControlButtons extends Element {
     });
 
     race.addEventListener('click', async () => {
+      const winnersButton = getElement(`.${ClassMap.buttonToWinners}`);
+      winnersButton.setAttribute('disabled', 'true');
+      const previousButton = getElement(`.${ClassMap.garage.garagePrevious}`);
+      const nextButton = getElement(`.${ClassMap.garage.garageNext}`);
+      previousButton.setAttribute('disabled', 'true');
+      nextButton.setAttribute('disabled', 'true');
       const winner = await this.raceController.startRace();
       await this.raceController.addWinner(winner);
+      winnersButton.removeAttribute('disabled');
+      previousButton.removeAttribute('disabled');
+      nextButton.removeAttribute('disabled');
     });
 
     reset.addEventListener('click', async () => {

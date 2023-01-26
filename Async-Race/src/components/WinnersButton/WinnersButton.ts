@@ -4,7 +4,7 @@ import { PageHashes } from '../../constants/constants';
 
 class WinnersButton extends Element {
   constructor() {
-    super('button', [ClassMap.buttonToGarage], Buttons.winners);
+    super('button', [ClassMap.buttonToWinners], Buttons.winners);
     this.addListeners();
   }
 

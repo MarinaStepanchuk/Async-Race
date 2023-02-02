@@ -8,7 +8,7 @@ import { getDistanceBetweenElements } from '../utils/getDistanceBetweenElements'
 import { getElement } from '../utils/getElement';
 import { Animation } from '../types/types';
 
-class GarageRaceController {
+class RaceController {
   private apiService;
 
   private animations: Animation = {};
@@ -26,6 +26,7 @@ class GarageRaceController {
     startButton.setAttribute('disabled', 'true');
 
     const data = await this.apiService.startEngine(id);
+
     if (!data) {
       selectButton.removeAttribute('disabled');
       removeButton.removeAttribute('disabled');
@@ -34,7 +35,7 @@ class GarageRaceController {
     }
 
     const { velocity, distance } = data;
-    const anumationTime = Math.round(distance / velocity);
+    const time = Math.round(distance / velocity);
     const car = getElement(`#${Ids.car}${id}`);
     const finish = getElement(`#${Ids.finish}${id}`);
     const distanceBetweenElements = getDistanceBetweenElements(car, finish);
@@ -46,40 +47,40 @@ class GarageRaceController {
         start = timestamp;
       }
 
-      const time = timestamp - start;
-      const passed = Math.round(time * (distanceBetweenElements / anumationTime));
+      const animationTime = timestamp - start;
+      const passed = Math.round(animationTime * (distanceBetweenElements / time));
       car.style.transform = `translateX(${Math.min(passed, distanceBetweenElements)}px)`;
 
       if (passed < distanceBetweenElements) {
-        this.animations[id] = window.requestAnimationFrame(step);
+        this.animations[id] = requestAnimationFrame(step);
       }
     };
 
-    this.animations[id] = window.requestAnimationFrame(step);
+    this.animations[id] = requestAnimationFrame(step);
 
     const { success } = await this.apiService.drive(id);
 
     if (!success) {
-      window.cancelAnimationFrame(this.animations[id]);
+      cancelAnimationFrame(this.animations[id]);
     }
 
-    return { id, success, time: anumationTime };
+    return { id, success, time };
   }
 
   public async stopCar(id: number): Promise<void> {
     await this.apiService.stopEngine(id);
     const car = getElement(`#${Ids.car}${id}`);
     car.style.transform = 'translateX(0)';
-    window.cancelAnimationFrame(this.animations[id]);
+    cancelAnimationFrame(this.animations[id]);
     const startButton = getElement(`#${Ids.start}${id}`);
     startButton.removeAttribute('disabled');
     const selectButton = getElement(`#${Ids.select}${id}`);
-    const removeButton = getElement(`#${Ids.remove}${id}`);
     selectButton.removeAttribute('disabled');
+    const removeButton = getElement(`#${Ids.remove}${id}`);
     removeButton.removeAttribute('disabled');
   }
 
-  public async startRace(): Promise<IWinnerData | null | undefined> {
+  public async startRace(): Promise<IWinnerData | null> {
     const stopCarButtons = [...document.querySelectorAll(`.${ClassMap.garage.stopCar[1]}`)];
     stopCarButtons.forEach((button) => {
       button.setAttribute('disabled', 'true');
@@ -98,7 +99,10 @@ class GarageRaceController {
     return winner;
   }
 
-  private async findWinner(promises: Promise<IChallenger | null>[], idCars: number[]): Promise<IWinnerData | null | undefined> {
+  private async findWinner(
+    promises: Promise<IChallenger | null>[],
+    idCars: number[],
+  ): Promise<IWinnerData | null> {
     const data = await Promise.race(promises);
 
     if (!data) {
@@ -109,16 +113,16 @@ class GarageRaceController {
 
     if (!success) {
       const failedCarIndex = idCars.findIndex((index) => index === id);
-      const restPromises = [...promises.slice(0, failedCarIndex), ...promises.slice(failedCarIndex + 1, promises.length)];
-      const restIds = [...idCars.slice(0, failedCarIndex), ...idCars.slice(failedCarIndex + 1, idCars.length)];
-      return this.findWinner(restPromises, restIds);
+      promises.splice(failedCarIndex, 1);
+      idCars.splice(failedCarIndex, 1);
+      return this.findWinner(promises, idCars);
     }
     const winner = { id, time: +(time / 1000).toFixed(2) };
     this.showMessage(winner);
     return winner;
   }
 
-  public showMessage(winner: Partial<IWinner> | null | undefined): void {
+  public showMessage(winner: Partial<IWinner> | null): void {
     const message = createElement({ tag: 'div', classList: [ClassMap.garage.message] });
 
     if (!winner) {
@@ -148,7 +152,7 @@ class GarageRaceController {
     message?.remove();
   }
 
-  public async addWinner(winner: IWinnerData | null | undefined): Promise<void> {
+  public async addWinner(winner: IWinnerData | null): Promise<void> {
     if (!winner) {
       return;
     }
@@ -166,4 +170,4 @@ class GarageRaceController {
   }
 }
 
-export default GarageRaceController;
+export default RaceController;

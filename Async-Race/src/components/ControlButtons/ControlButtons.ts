@@ -8,15 +8,17 @@ import Garage from '../../containers/Garage/Garage';
 // eslint-disable-next-line import/no-cycle
 import { getElement } from '../../utils/getElement';
 import { amountRandomCars } from '../../constants/constants';
-import GarageRaceController from '../../GarageRaceController/GarageRaceController';
+import GarageRaceController from '../../services/RaceController';
 
 class ControlButtons extends Element {
   private raceController;
+  private apiService;
 
   constructor() {
     super('div', [ClassMap.garage.controlButtons]);
     this.fill();
     this.raceController = new GarageRaceController();
+    this.apiService = new Api();
   }
 
   private fill():void {
@@ -53,11 +55,10 @@ class ControlButtons extends Element {
   }
 
   private async generateCars():Promise<void> {
-    const apiService = new Api();
     const cars = new Array(amountRandomCars).fill(1).map(() => ({ name: getRandomCarName(), color: getRandomCarColor() }));
-    await Promise.all(cars.map((car) => apiService.createCar(car)));
+    await Promise.all(cars.map((car) => this.apiService.createCar(car)));
     const garage = getElement(`.${ClassMap.garage.race}`);
-    const garageUpdate = new Garage(apiService).element;
+    const garageUpdate = new Garage(this.apiService).element;
     garage.replaceWith(garageUpdate);
   }
 }

@@ -8,8 +8,8 @@ import Api from '../../api/Api';
 import Garage from '../Garage/Garage';
 import { getElement } from '../../utils/getElement';
 // eslint-disable-next-line import/no-cycle
-import UpdateCar from '../../components/UpdateCar/UpdateCar';
-import GarageRaceController from '../../GarageRaceController/GarageRaceController';
+import UpdateCar from '../../components/СarUpdater/СarUpdater';
+import GarageRaceController from '../../services/RaceController';
 import { State } from '../../constants/state';
 
 class Race extends Element {

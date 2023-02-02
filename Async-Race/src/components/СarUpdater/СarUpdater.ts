@@ -1,4 +1,4 @@
-import './UpdateCar.styles.scss';
+import './СarUpdater.styles.scss';
 import Element from '../Element';
 import {
   Buttons,
@@ -13,7 +13,7 @@ import Garage from '../../containers/Garage/Garage';
 import Api from '../../api/Api';
 import { State } from '../../constants/state';
 
-class UpdateCar extends Element {
+class СarUpdater extends Element {
   public apiService = new Api();
 
   constructor() {
@@ -93,4 +93,4 @@ class UpdateCar extends Element {
   }
 }
 
-export default UpdateCar;
+export default СarUpdater;

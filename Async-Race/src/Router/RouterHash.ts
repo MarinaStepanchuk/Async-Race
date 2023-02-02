@@ -3,7 +3,6 @@ import { RoutesType } from '../types/types';
 
 class RouterHash {
   constructor(private readonly routes: RoutesType) {
-    this.routes = routes;
   }
 
   public router(): void {

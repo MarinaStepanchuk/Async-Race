@@ -11,12 +11,13 @@ import { getElement } from '../../utils/getElement';
 import Garage from '../../containers/Garage/Garage';
 import { State } from '../../constants/state';
 
-class CreateCar extends Element {
-  public apiService = new Api();
+class CarCreater extends Element {
+  public apiService;
 
   constructor() {
     super('form', [ClassMap.garage.form], '');
     this.fill();
+    this.apiService = new Api();
   }
 
   private fill():void {
@@ -59,4 +60,4 @@ class CreateCar extends Element {
   }
 }
 
-export default CreateCar;
+export default CarCreater;

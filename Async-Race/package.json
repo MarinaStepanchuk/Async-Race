@@ -8,8 +8,7 @@
     "build": "webpack --config ./webpack.prod.config.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint ./src --fix --color",
-    "slint": "stylelint **/*.scss --fix",
-    "deploy": "npm run build && npx gh-pages -d dist -e Async-Race"
+    "slint": "stylelint **/*.scss --fix"
   },
   "repository": {
     "type": "git",
@@ -48,7 +47,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@types/nouislider": "^15.0.0",
-    "nouislider": "^15.6.1"
+    "@types/nouislider": "^15.0.0"
   }
 }

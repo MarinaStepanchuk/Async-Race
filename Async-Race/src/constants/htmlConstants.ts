@@ -124,3 +124,7 @@ export const Types = {
 export const defaultColor = '#FEEA0B';
 
 export const messageWinnerNotFound = 'All cars are broken';
+
+export const maximumColorIntensity = 255;
+
+export const startCoordinate = 70;

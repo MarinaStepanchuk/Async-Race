@@ -7,7 +7,6 @@ import {
 class WinnersSubheader extends Element {
   constructor(private countWinners: number) {
     super('h2', [ClassMap.winners.winnersHeader]);
-    this.countWinners = countWinners;
     this.fill();
   }
 

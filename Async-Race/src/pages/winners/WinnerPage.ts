@@ -12,13 +12,14 @@ import WinnersSubheader from '../../components/WinnersSubheader/WinnersSubheader
 import WinnerTables from '../../containers/WinnersTable/WinnersTable';
 
 class WinnerPage {
-  public apiService = new Api();
+  public apiService;
 
   private header: HTMLElement;
 
   private main: HTMLElement;
 
   constructor() {
+    this.apiService = new Api();
     this.header = new Header(ButtonNames.WINNERS).element;
     this.main = new Element('main', [ClassMap.winners.winnerdPage]).element;
   }

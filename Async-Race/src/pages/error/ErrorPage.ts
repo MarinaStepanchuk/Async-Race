@@ -9,10 +9,9 @@ class ErrorPage extends Element {
   }
 
   public render(): void {
-    body.innerHTML = '';
-    body.append(this.element);
     const errorMessage = new Element('div', [ClassMap.errorMessage], Content.errorMessage).element;
     this.element.append(errorMessage);
+    body.replaceChildren(this.element);
   }
 }
 

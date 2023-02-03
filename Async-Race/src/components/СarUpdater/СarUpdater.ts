@@ -5,8 +5,8 @@ import {
   ClassMap,
   Ids,
   Types,
-  defaultColor,
 } from '../../constants/htmlConstants';
+import { defaultColor } from '../../constants/constants';
 import { getElement } from '../../utils/getElement';
 // eslint-disable-next-line import/no-cycle
 import Garage from '../../containers/Garage/Garage';
@@ -14,10 +14,11 @@ import Api from '../../api/Api';
 import { State } from '../../constants/state';
 
 class СarUpdater extends Element {
-  public apiService = new Api();
+  public apiService;
 
   constructor() {
     super('form', [ClassMap.garage.form], '');
+    this.apiService = new Api();
     this.fill();
   }
 

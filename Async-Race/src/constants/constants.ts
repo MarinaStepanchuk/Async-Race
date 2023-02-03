@@ -18,3 +18,11 @@ export const CarBrands = ['Audi', 'BMW', 'Ford', 'Honda', 'Hyundai', 'Kia', 'Lad
 export const CarModels = ['A8', 'M2', 'CR-V', 'CX-30', 'K-900', 'Creta', 'Maybach', 'Vitara', 'Tucson', 'B5'];
 
 export const amountRandomCars = 100;
+
+export const defaultColor = '#FEEA0B';
+
+export const messageWinnerNotFound = 'All cars are broken';
+
+export const maximumColorIntensity = 255;
+
+export const startCoordinate = 70;

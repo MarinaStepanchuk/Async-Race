@@ -1,5 +1,5 @@
 import { StateTypes } from '../types/types';
-import { defaultColor } from './htmlConstants';
+import { defaultColor } from './constants';
 
 export const State: StateTypes = {
   PARAMS_CARS: {

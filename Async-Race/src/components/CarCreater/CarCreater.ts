@@ -2,10 +2,10 @@ import Element from '../Element';
 import {
   Buttons,
   ClassMap,
-  defaultColor,
   Ids,
   Types,
 } from '../../constants/htmlConstants';
+import { defaultColor } from '../../constants/constants';
 import Api from '../../api/Api';
 import { getElement } from '../../utils/getElement';
 import Garage from '../../containers/Garage/Garage';

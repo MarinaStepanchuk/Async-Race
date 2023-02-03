@@ -5,7 +5,12 @@ import {
   DataDistance, Drive,
 } from '../types/types';
 import {
-  StatusCodes, ErrorMessages, RequestMethods, FileTypes, RequestHeaders, MovementStatuses,
+  StatusCode,
+  ErrorMessage,
+  RequestMethods,
+  FileTypes,
+  RequestHeaders,
+  MovementStatuses,
 } from '../types/enums';
 import { Endpoints } from '../constants/constants';
 import { getUrlWithParams } from '../utils/getUrlWithParams';
@@ -33,12 +38,12 @@ class Api {
       const data = await response.json();
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           return data;
-        case StatusCodes.NOT_FOUND:
-          throw new Error(ErrorMessages.NOT_FOUND_CAR);
+        case StatusCode.NOT_FOUND:
+          throw new Error(ErrorMessage.NOT_FOUND_CAR);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return null;
@@ -92,12 +97,12 @@ class Api {
       const data = await response.json();
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           return data;
-        case StatusCodes.NOT_FOUND:
-          throw new Error(ErrorMessages.NOT_FOUND_CAR);
+        case StatusCode.NOT_FOUND:
+          throw new Error(ErrorMessage.NOT_FOUND_CAR);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return null;
@@ -111,14 +116,14 @@ class Api {
       const data = await response.json();
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           return data;
-        case StatusCodes.NOT_FOUND:
-          throw new Error(ErrorMessages.NOT_FOUND_CAR);
-        case StatusCodes.BAD_REQUEST:
-          throw new Error(ErrorMessages.WRONG_PARAMETERS);
+        case StatusCode.NOT_FOUND:
+          throw new Error(ErrorMessage.NOT_FOUND_CAR);
+        case StatusCode.BAD_REQUEST:
+          throw new Error(ErrorMessage.WRONG_PARAMETERS);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return null;
@@ -132,14 +137,14 @@ class Api {
       const data = await response.json();
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           return data;
-        case StatusCodes.NOT_FOUND:
-          throw new Error(ErrorMessages.NOT_FOUND_CAR);
-        case StatusCodes.BAD_REQUEST:
-          throw new Error(ErrorMessages.WRONG_PARAMETERS);
+        case StatusCode.NOT_FOUND:
+          throw new Error(ErrorMessage.NOT_FOUND_CAR);
+        case StatusCode.BAD_REQUEST:
+          throw new Error(ErrorMessage.WRONG_PARAMETERS);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return null;
@@ -153,18 +158,18 @@ class Api {
       const data = await response.json();
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           return data;
-        case StatusCodes.BAD_REQUEST:
-          throw new Error(ErrorMessages.WRONG_PARAMETERS);
-        case StatusCodes.NOT_FOUND:
-          throw new Error(ErrorMessages.NOT_FOUND_CAR_TO_START);
-        case StatusCodes.TOO_MANY_REQUESTS:
-          throw new Error(ErrorMessages.DRIVE_IN_PROGRESS);
-        case StatusCodes.INTERNAL_SERVER_ERROR:
-          throw new Error(ErrorMessages.TURNED_ENGINE);
+        case StatusCode.BAD_REQUEST:
+          throw new Error(ErrorMessage.WRONG_PARAMETERS);
+        case StatusCode.NOT_FOUND:
+          throw new Error(ErrorMessage.NOT_FOUND_CAR_TO_START);
+        case StatusCode.TOO_MANY_REQUESTS:
+          throw new Error(ErrorMessage.DRIVE_IN_PROGRESS);
+        case StatusCode.INTERNAL_SERVER_ERROR:
+          throw new Error(ErrorMessage.TURNED_ENGINE);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return { success: false };
@@ -199,12 +204,12 @@ class Api {
       const data = await response.json();
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           return data;
-        case StatusCodes.NOT_FOUND:
-          throw new Error(ErrorMessages.NOT_FOUND_WINNER);
+        case StatusCode.NOT_FOUND:
+          throw new Error(ErrorMessage.NOT_FOUND_WINNER);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return null;
@@ -226,12 +231,12 @@ class Api {
       );
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           throw await response.json();
-        case StatusCodes.INTERNAL_SERVER_ERROR:
-          throw new Error(ErrorMessages.DUPLICATE_ID);
+        case StatusCode.INTERNAL_SERVER_ERROR:
+          throw new Error(ErrorMessage.DUPLICATE_ID);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return null;
@@ -264,12 +269,12 @@ class Api {
       const data = await response.json();
 
       switch (response.status) {
-        case StatusCodes.OK:
+        case StatusCode.OK:
           return data;
-        case StatusCodes.NOT_FOUND:
-          throw new Error(ErrorMessages.NOT_FOUND_WINNER);
+        case StatusCode.NOT_FOUND:
+          throw new Error(ErrorMessage.NOT_FOUND_WINNER);
         default:
-          throw new Error(ErrorMessages.UNKNOWN);
+          throw new Error(ErrorMessage.UNKNOWN);
       }
     } catch {
       return null;

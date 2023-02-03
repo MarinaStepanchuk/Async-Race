@@ -14,9 +14,11 @@ class Car {
 
   constructor(private car: ICar) {
     this.element = createElement({
-      tag: 'div', classList: [ClassMap.garage.carContainer], content: '', id: `${Ids.road}${car.id}`,
+      tag: 'div',
+      classList: [ClassMap.garage.carContainer],
+      content: '',
+      id: `${Ids.road}${car.id}`,
     });
-
     this.fill();
   }
 

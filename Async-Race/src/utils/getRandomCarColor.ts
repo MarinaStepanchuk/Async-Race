@@ -1,4 +1,4 @@
-import { maximumColorIntensity } from '../constants/htmlConstants';
+import { maximumColorIntensity } from '../constants/constants';
 
 export const getRandomCarColor = (): string => {
   const r = Math.floor(Math.random() * maximumColorIntensity);

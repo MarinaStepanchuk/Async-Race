@@ -1,5 +1,5 @@
 import { getCenterPosition } from './getCenterPosition';
-import { startCoordinate } from '../constants/htmlConstants';
+import { startCoordinate } from '../constants/constants';
 
 export const getDistanceBetweenElements = (firstElement: HTMLElement, secondElement: HTMLElement): number => {
   const firstElementPosition = getCenterPosition(firstElement);

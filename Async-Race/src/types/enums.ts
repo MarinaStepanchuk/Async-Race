@@ -1,4 +1,4 @@
-export enum ErrorMessages {
+export enum ErrorMessage {
   WRONG_PARAMETERS = 'Wrong parameters: "id" should be any positive number, "status" should be "started", "stopped" or "drive"',
   NOT_FOUND_CAR = 'Car with such id was not found in the garage.',
   NOT_FOUND_WINNER = 'Car with such id was not found in the winners.',
@@ -9,7 +9,7 @@ export enum ErrorMessages {
   DUPLICATE_ID = 'Insert failed, duplicate id',
 }
 
-export enum StatusCodes {
+export enum StatusCode {
   BAD_REQUEST = 400,
   NOT_FOUND = 404,
   TOO_MANY_REQUESTS = 429,
